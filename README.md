@@ -8,7 +8,7 @@
 - 배포: Vercel 또는 Cloudflare (아래 참고)
 
 ## 처음 켜기
-1. Supabase 프로젝트 생성 → SQL Editor에 `supabase/migrations/0001_init.sql` 실행
+1. Supabase 프로젝트 생성 → SQL Editor에 `supabase/migrations/0001_init.sql`, `0002_rpc.sql` 순서로 실행 (서버 비밀키 불필요)
 2. Authentication > Providers에서 Kakao·Google 켜기(각 개발자 콘솔에서 키 발급), Email은 기본 켜짐
 3. `.env.example`을 `.env.local`로 복사해 값 채우기
 4. `npm install && npm run dev` → http://localhost:3000

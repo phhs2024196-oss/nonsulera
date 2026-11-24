@@ -1,7 +1,7 @@
 import { NextResponse, type NextRequest } from "next/server";
 import { questions, score } from "@/lib/test";
 import { logEvent } from "@/lib/track";
-import { currentUser, serviceClient } from "@/lib/supabase/server";
+import { userClient } from "@/lib/supabase/server";
 
 export async function POST(req: NextRequest) {
   const body = await req.json().catch(() => null);
@@ -14,8 +14,7 @@ export async function POST(req: NextRequest) {
   }
   const { code, pct } = score(answers);
   await logEvent("test_result", { target: code, path: "/test", meta: { pct, answers } });
-  const user = await currentUser().catch(() => null);
-  const sb = serviceClient();
-  if (user && sb) await sb.from("profiles").update({ nonsul_type: code }).eq("id", user.id);
+  const sb = await userClient();
+  if (sb) await sb.rpc("set_my_type", { p_code: code }); // 비회원이면 DB 함수가 무시함
   return NextResponse.json({ code, pct });
 }

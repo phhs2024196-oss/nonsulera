@@ -1,9 +1,11 @@
 import { createServerClient } from "@supabase/ssr";
-import { createClient } from "@supabase/supabase-js";
 import { cookies } from "next/headers";
-import { SUPABASE_ANON, SUPABASE_SERVICE, SUPABASE_URL, authReady, dbReady } from "./env";
+import { SUPABASE_ANON, SUPABASE_URL, authReady } from "./env";
 
-/** 로그인한 사용자 권한으로 동작하는 클라이언트 (RLS 적용) */
+/**
+ * 방문자 권한(공개 키 + 로그인 쿠키)으로 동작하는 클라이언트.
+ * 서버 비밀키는 쓰지 않는다. 쓰기·통계는 DB의 검증 함수(log_event, update_my_profile, admin_stats)로만 한다.
+ */
 export async function userClient() {
   if (!authReady) return null;
   const store = await cookies();
@@ -19,12 +21,6 @@ export async function userClient() {
       },
     },
   });
-}
-
-/** 서버 전용 관리자 클라이언트 (RLS 우회). 기록 저장·통계에만 사용 */
-export function serviceClient() {
-  if (!dbReady) return null;
-  return createClient(SUPABASE_URL, SUPABASE_SERVICE, { auth: { persistSession: false } });
 }
 
 export async function currentUser() {

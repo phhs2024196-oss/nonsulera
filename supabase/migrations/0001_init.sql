@@ -24,7 +24,7 @@ begin
   insert into public.profiles (id, nickname) values (new.id, coalesce(new.raw_user_meta_data->>'name', split_part(new.email, '@', 1)));
   return new;
 end $$;
-drop trigger if exists on_auth_user_created on auth.users;
+revoke execute on function public.handle_new_user() from anon, authenticated, public;
 create trigger on_auth_user_created after insert on auth.users
   for each row execute function public.handle_new_user();
 
@@ -42,16 +42,17 @@ create table if not exists public.events (
 );
 create index if not exists events_type_time on public.events (type, created_at desc);
 create index if not exists events_target on public.events (type, target);
-alter table public.events enable row level security; -- 정책 없음: 서버(service role)만 읽고 씀
+create index if not exists events_user on public.events (user_id);
+alter table public.events enable row level security; -- 정책 없음: 0002의 log_event 함수로만 기록
 
 -- 3. 관리자 통계용 뷰
-create or replace view public.stat_downloads as
+create or replace view public.stat_downloads with (security_invoker = on) as
   select target, count(*) as total,
          count(distinct coalesce(user_id::text, visitor_id)) as unique_people,
          count(*) filter (where created_at > now() - interval '7 days') as last_7d
   from public.events where type = 'download' group by target;
 
-create or replace view public.stat_daily as
+create or replace view public.stat_daily with (security_invoker = on) as
   select (created_at at time zone 'Asia/Seoul')::date as day,
          count(*) filter (where type = 'page_view') as views,
          count(distinct visitor_id) filter (where type = 'page_view') as visitors,
@@ -59,22 +60,22 @@ create or replace view public.stat_daily as
          count(*) filter (where type = 'signup') as signups
   from public.events group by 1 order by 1 desc;
 
-create or replace view public.stat_wishes as
+create or replace view public.stat_wishes with (security_invoker = on) as
   select target, count(distinct coalesce(user_id::text, visitor_id)) as people
   from public.events where type = 'wish' group by target order by people desc;
 
-create or replace view public.stat_pages as
+create or replace view public.stat_pages with (security_invoker = on) as
   select path, count(*) as views, count(distinct visitor_id) as visitors
   from public.events where type = 'page_view' and created_at > now() - interval '30 days'
   group by path order by views desc;
 
-create or replace view public.stat_referrers as
-  select coalesce(meta->>'utm_source', split_part(split_part(referrer, '://', 2), '/', 1), '(직접)') as source,
+create or replace view public.stat_referrers with (security_invoker = on) as
+  select coalesce(meta->>'utm_source', nullif(split_part(split_part(referrer, '://', 2), '/', 1), ''), '(직접)') as source,
          count(distinct visitor_id) as visitors
   from public.events where type = 'page_view' and created_at > now() - interval '30 days'
   group by 1 order by visitors desc;
 
-create or replace view public.stat_types as
+create or replace view public.stat_types with (security_invoker = on) as
   select target as code, count(*) as results,
          count(distinct coalesce(user_id::text, visitor_id)) as people
   from public.events where type = 'test_result' group by target order by people desc;

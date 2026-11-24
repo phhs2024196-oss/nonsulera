@@ -1,6 +1,6 @@
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
-import { currentUser, serviceClient } from "@/lib/supabase/server";
+import { userClient } from "@/lib/supabase/server";
 import { books, materials } from "@/lib/site";
 import { types } from "@/lib/test";
 
@@ -39,22 +39,14 @@ function Table({ head, rows }: { head: string[]; rows: (string | number)[][] }) 
 }
 
 export default async function Admin() {
-  const user = await currentUser();
-  const sb = serviceClient();
-  if (!user || !sb) notFound();
-  const me = await sb.from("profiles").select("is_admin").eq("id", user.id).single();
-  if (!me.data?.is_admin) notFound();
-
-  const [dl, daily, wishes, pages, refs, profiles, tp] = await Promise.all([
-    sb.from("stat_downloads").select("*"),
-    sb.from("stat_daily").select("*").limit(14),
-    sb.from("stat_wishes").select("*"),
-    sb.from("stat_pages").select("*").limit(15),
-    sb.from("stat_referrers").select("*").limit(10),
-    sb.from("profiles").select("grade,target_schools,strengths,wanted_books,marketing_ok"),
-    sb.from("stat_types").select("*"),
-  ]);
-  const P = profiles.data ?? [];
+  const sb = await userClient();
+  if (!sb) notFound();
+  const { data: st, error } = await sb.rpc("admin_stats");
+  if (error || !st) notFound(); // 관리자 아니면 DB 함수가 거부
+  type R = Record<string, any>; // eslint-disable-line @typescript-eslint/no-explicit-any
+  const dl = { data: st.downloads as R[] }, daily = { data: st.daily as R[] }, wishes = { data: st.wishes as R[] },
+    pages = { data: st.pages as R[] }, refs = { data: st.referrers as R[] }, tp = { data: st.types as R[] };
+  const P = st.profiles as R[];
 
   return (
     <div className="wrap" style={{ padding: "48px var(--gutter)" }}>

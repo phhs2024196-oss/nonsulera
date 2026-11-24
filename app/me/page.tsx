@@ -1,7 +1,7 @@
 import { redirect } from "next/navigation";
 import type { Metadata } from "next";
 import ProfileForm from "./ProfileForm";
-import { currentUser, serviceClient } from "@/lib/supabase/server";
+import { currentUser, userClient } from "@/lib/supabase/server";
 import { books, grades, strengths } from "@/lib/site";
 
 export const dynamic = "force-dynamic";
@@ -10,7 +10,8 @@ export const metadata: Metadata = { title: "내 정보", robots: { index: false 
 export default async function Me() {
   const user = await currentUser();
   if (!user) redirect("/login?next=/me");
-  const { data } = (await serviceClient()?.from("profiles").select("*").eq("id", user.id).single()) ?? { data: null };
+  const sb = await userClient();
+  const { data } = (await sb?.from("profiles").select("*").eq("id", user.id).single()) ?? { data: null };
   const initial = {
     nickname: data?.nickname ?? "",
     grade: data?.grade ?? "",
