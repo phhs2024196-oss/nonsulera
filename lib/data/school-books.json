@@ -21,6 +21,13 @@
   "pages": 20
  },
  {
+  "code": "SKKU",
+  "name": "성균관대학교",
+  "file": "/files/schools/jipijigi-skku.pdf",
+  "updated": "2026-11-25",
+  "pages": 18
+ },
+ {
   "code": "YSU",
   "name": "연세대학교",
   "file": "/files/schools/jipijigi-ysu.pdf",
