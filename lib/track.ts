@@ -16,6 +16,7 @@ export async function logEvent(type: EventType, data: { path?: string; target?: 
     p_target: data.target ?? null,
     p_referrer: h.get("referer"),
     p_meta: data.meta ?? {},
+    p_ua: h.get("user-agent") ?? "",
   };
   const sb = await userClient();
   if (!sb) {

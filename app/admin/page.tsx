@@ -77,14 +77,14 @@ export default async function Admin() {
     <div className="wrap admin" style={{ padding: "40px var(--gutter)" }}>
       <div style={{ display: "flex", alignItems: "baseline", gap: 12, flexWrap: "wrap", marginBottom: 20 }}>
         <h1 style={{ fontSize: 28 }}>관리자</h1>
-        <span className="faint">불러온 시각 {kst(new Date().toISOString())} · 기록 시작 {k.first_event ? kst(k.first_event) : "-"}</span>
+        <span className="faint">불러온 시각 {kst(new Date().toISOString())} · 기록 시작 {k.first_event ? kst(k.first_event) : "-"} · 사람만 집계(로봇·미리보기 {n(k.excluded_bot)}건, 대표님 기기 {n(k.excluded_admin)}건 제외)</span>
       </div>
 
       <div className="kpis">
         <Kpi label="오늘 방문자" value={k.visitors_today} sub={`7일 ${n(k.visitors_7d)} · 30일 ${n(k.visitors_30d)}`} />
         <Kpi label="누적 방문자" value={k.visitors_all} sub={`페이지뷰 ${n(k.views_all)}`} />
         <Kpi label="자료 다운로드" value={k.downloads_all} sub={`최근 7일 ${n(k.downloads_7d)}`} />
-        <Kpi label="회원" value={k.members} sub={`최근 7일 +${n(k.members_7d)} · 소식 동의 ${P.filter((p) => p.marketing_ok).length}`} />
+        <Kpi label="회원 (대표님 제외)" value={k.members} sub={`최근 7일 +${n(k.members_7d)} · 소식 동의 ${P.filter((p) => p.marketing_ok).length}`} />
         <Kpi label="유형 검사" value={k.tests_all} />
         <Kpi label="대학 진단" value={k.diagnoses_all} sub="기능 공개 전" />
       </div>
@@ -118,6 +118,9 @@ export default async function Admin() {
         </Box>
         <Box title="기다리는 책·서비스">
           <Table head={["항목", "표시한 사람"]} rows={(st.wishes as R[]).map((r) => [nameOf(r.target), r.people])} bar={1} />
+        </Box>
+        <Box title="제외된 로봇·링크 미리보기">
+          <Table head={["종류", "브라우저 정보", "건수"]} rows={((st.bots ?? []) as R[]).map((r) => [r.type, r.ua || "(없음)", r.n])} />
         </Box>
         <Box title="찜 많이 된 대학 (대학 진단)">
           <Table head={["대학", "회원 수"]} rows={(st.saved_schools as R[]).map((r) => [schoolName(r.code), r.n])} bar={1} />
