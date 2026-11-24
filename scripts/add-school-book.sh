@@ -7,8 +7,9 @@
 set -euo pipefail
 cd "$(dirname "$0")/.."
 CODE=$(echo "$1" | tr '[:lower:]' '[:upper:]'); low=$(echo "$CODE" | tr '[:upper:]' '[:lower:]')
-SRC="/mnt/project-files/site/school-books/${CODE}/jipijigi-${low}.pdf"
-[ -f "$SRC" ] || SRC="/mnt/project-files/site/school-books/${low}/jipijigi-${low}.pdf"
+DIR="${SCHOOL_BOOKS_DIR:-/mnt/project-files/site/school-books}"
+SRC="$DIR/${CODE}/jipijigi-${low}.pdf"
+[ -f "$SRC" ] || SRC="$DIR/${low}/jipijigi-${low}.pdf"
 [ -f "$SRC" ] || { echo "PDF 없음: $SRC"; exit 1; }
 size=$(stat -c %s "$SRC"); [ "$size" -lt 95000000 ] || { echo "95MB 초과"; exit 1; }
 cp "$SRC" "public/files/schools/jipijigi-${low}.pdf"
