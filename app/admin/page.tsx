@@ -1,7 +1,7 @@
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
 import { userClient } from "@/lib/supabase/server";
-import { books, materials } from "@/lib/site";
+import { books, materials, schoolBooks } from "@/lib/site";
 import { types } from "@/lib/test";
 import { schoolName } from "@/lib/diag";
 import { qna } from "@/lib/qna";
@@ -144,6 +144,12 @@ export default async function Admin() {
         <Box title="자료 다운로드">
           <Table head={["자료", "총", "사람", "7일"]} rows={(st.downloads as R[]).map((r) => [nameOf(r.target), r.total, r.unique_people, r.last_7d])} />
           <Table head={["다운로드 유입(utm)", "횟수"]} rows={(st.utm as R[]).map((r) => [r.source, r.n])} bar={1} />
+        </Box>
+        <Box title={`학교편 지피지기 (${schoolBooks.length}곳 공개)`}>
+          <Table head={["학교", "공개일", "다운로드", "사람"]} rows={schoolBooks.map((b) => {
+            const d = (st.downloads as R[]).find((r) => r.target === `jipijigi-${b.code.toLowerCase()}`);
+            return [b.name, b.updated, d?.total ?? 0, d?.unique_people ?? 0];
+          }).sort((a, b) => Number(b[2]) - Number(a[2]))} bar={2} />
         </Box>
         <Box title="어디서 왔나 (30일)">
           <Table head={["유입", "방문자"]} rows={(st.referrers as R[]).map((r) => [r.source, r.visitors])} bar={1} />

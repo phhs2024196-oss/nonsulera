@@ -1,3 +1,4 @@
+import schoolBookData from "./data/school-books.json";
 export const site = {
   name: "논술의 시대",
   url: process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000",
@@ -19,6 +20,9 @@ export type Material = {
   points?: string[];
   membersOnly?: boolean; // 로그인한 회원만 받기
 };
+
+/** 학교편 지피지기: scripts/add-school-book.sh가 lib/data/school-books.json에 추가한다 */
+export const schoolBooks = schoolBookData as { code: string; name: string; file: string; updated: string; pages?: number }[];
 
 export const materials: Material[] = [
   {
@@ -50,6 +54,16 @@ export const materials: Material[] = [
     kind: "무료 진단고사",
     summary: "실제 문제를 풀어 보고 지금 내 위치를 확인합니다.",
   },
+  ...schoolBooks.map((b): Material => ({
+    slug: `jipijigi-${b.code.toLowerCase()}`,
+    title: `지피지기 ${b.name}`,
+    kind: "학교편",
+    membersOnly: true,
+    file: b.file,
+    pages: b.pages,
+    updated: b.updated,
+    summary: `${b.name} 수리논술의 시험 형식, 자주 나오는 단원, 채점 기준, 대표 기출, 준비 플랜을 한 권에 담았어요.`,
+  })),
 ];
 
 export const books = [

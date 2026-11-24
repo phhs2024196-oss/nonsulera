@@ -3,7 +3,7 @@ import { notFound } from "next/navigation";
 import type { Metadata } from "next";
 import Cover from "@/components/Cover";
 import WishButton from "@/components/WishButton";
-import { materials, site } from "@/lib/site";
+import { materials, schoolBooks, site } from "@/lib/site";
 
 export function generateStaticParams() {
   return materials.map((m) => ({ slug: m.slug }));
@@ -40,7 +40,16 @@ export default async function MaterialPage({ params }: { params: Promise<{ slug:
           {m.membersOnly && <p style={{ marginTop: 12 }}><span className="tag st-ok">회원 전용</span> <span className="faint">로그인하면 바로 받을 수 있어요. 가입은 카카오로 10초면 돼요.</span></p>}
           <p className="muted" style={{ marginTop: 16 }}>{m.summary}</p>
           {m.points && <ul>{m.points.map((p) => <li key={p}>{p}</li>)}</ul>}
-          {m.file ? (
+          {m.slug === "jipijigi-schools" && schoolBooks.length > 0 ? (
+            <>
+              <p className="faint">지금 {schoolBooks.length}곳이 공개됐고, 검증을 통과하는 대로 계속 늘어나요.</p>
+              <div className="school-grid">
+                {schoolBooks.map((b) => (
+                  <Link key={b.code} className="sg" href={`/materials/jipijigi-${b.code.toLowerCase()}`}><b>{b.name}</b><span className="faint">{b.pages ? `${b.pages}쪽 · ` : ""}{b.updated}</span></Link>
+                ))}
+              </div>
+            </>
+          ) : m.file ? (
             <>
               <a className="btn" href={`/download/${m.slug}?from=detail`}>{m.membersOnly ? "로그인하고 PDF 받기" : "PDF 받기"}</a>
               {m.updated && <p className="faint" style={{ marginTop: 12 }}>최종 수정 {m.updated}</p>}
