@@ -14,7 +14,7 @@ export default function TestPage() {
       <div className="kicker sans" style={{ color: "var(--seal)", fontSize: 15, marginBottom: 10 }}>3분 · 24문항</div>
       <h1>논술 유형 검사</h1>
       <p className="muted">
-        생각하는 방식, 답안 쓰는 방식, 푸는 속도, 입시 전략. 네 가지 축으로 16가지 유형을 나눠요.
+        생각하는 법, 답안 쓰는 법, 푸는 속도, 입시 전략. 네 축으로 16가지 유형을 나누고 결과마다 잘 맞는 학교를 기출 DB와 모집요강 숫자로 보여 줘요.
         정답은 없어요. 지금의 나에 가까운 쪽을 고르세요.
       </p>
       <Quiz />

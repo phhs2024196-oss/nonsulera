@@ -1,6 +1,6 @@
 "use client";
 import { useSearchParams } from "next/navigation";
-import { axes, poleInfo } from "@/lib/test";
+import { axes, clarity, poleInfo } from "@/lib/test";
 
 export default function Bars({ code }: { code: string }) {
   const v = useSearchParams().get("v")?.split("-").map(Number);
@@ -11,7 +11,7 @@ export default function Bars({ code }: { code: string }) {
         const left = mine ? v![i] : code[i] === ax.poles[0] ? 65 : 35;
         return (
           <div key={ax.key} className="bar">
-            <div className="bar-name faint">{ax.name}</div>
+            <div className="bar-name faint">{ax.name}{mine && <> · <b className={`cl cl-${clarity(left)}`}>{clarity(left)}</b> {Math.max(left, 100 - left)}%</>}</div>
             <div className="bar-row">
               <span className={code[i] === ax.poles[0] ? "on" : ""}>{poleInfo[ax.poles[0]].label}</span>
               <div className="track"><span style={{ width: `${left}%` }} /></div>

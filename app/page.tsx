@@ -19,7 +19,7 @@ export default function Home() {
               그 풀이를 <em>논리적인 말</em>로 바꾼다.
             </h1>
             <p className="lead">
-              무조건 논술하라고 말하지 않아요. 대학이 공개한 숫자와 대학이 직접 쓴 문장을 보여 드리고, 판단은 여러분이 하게 해요.
+              무조건 논술하라고 말하지 않아요. 대학이 공개한 숫자와 대학이 직접 쓴 문장을 보여 드릴게요. 판단은 여러분 몫이에요.
               내신과 수능에 지장 없이, 효율적으로.
             </p>
             <div style={{ display: "flex", gap: 12, flexWrap: "wrap", marginTop: 28 }}>
@@ -75,7 +75,7 @@ export default function Home() {
       <section className="sec test-band">
         <div className="wrap">
           <div className="sec-head"><span className="no">三</span><h2>나는 어떤 논술형일까</h2></div>
-          <p className="muted" style={{ maxWidth: "36em" }}>24문항, 3분. 생각하는 방식·답안 쓰는 방식·푸는 속도·입시 전략으로 16가지 유형을 나누고, 유형마다 점수가 새는 곳과 준비 순서를 알려 드려요.</p>
+          <p className="muted" style={{ maxWidth: "36em" }}>24문항, 3분. 생각하는 법·답안 쓰는 법·푸는 속도·입시 전략으로 16가지 유형을 나눠요. 유형마다 점수가 새는 곳과 나에게 맞는 학교를 대학 데이터로 보여 드려요.</p>
           <div className="typegrid" style={{ margin: "20px 0 24px" }}>
             {["SEQA", "VBQA", "SBDH", "VEDA"].map((c) => (
               <Link key={c} href={`/test/result/${c}`}><span className="brush">{types[c].name}</span><span className="faint">{c}</span></Link>

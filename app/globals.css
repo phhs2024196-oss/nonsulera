@@ -201,3 +201,28 @@ table.stat td.num { text-align: right; font-variant-numeric: tabular-nums; }
 .spark .sp { flex: 1; height: 100%; display: flex; flex-direction: column; justify-content: flex-end; align-items: center; position: relative; }
 .spark .sp i { display: block; width: 100%; background: var(--ink-soft); border-radius: 3px 3px 0 0; min-height: 2px; }
 .spark .sp b { position: absolute; top: -8px; width: 6px; height: 6px; border-radius: 50%; background: var(--seal); }
+
+/* 유형 검사 결과: 근거 그래프 */
+.ev { margin: 22px 0 30px; padding: 18px 0 0; border-top: 1px solid var(--line, #e5e5e5); }
+.ev figcaption { font-weight: 800; font-size: 17px; line-height: 1.45; margin-bottom: 14px; }
+.hbars, .dumb { display: grid; gap: 7px; }
+.hb, .db { display: grid; grid-template-columns: 7.2em 1fr auto; gap: 10px; align-items: center; font-size: 14px; }
+.hb-n { color: var(--ink); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.hb-t { height: 14px; background: #f1f1f1; border-radius: 2px; position: relative; }
+.hb-t i { display: block; height: 100%; background: #8a8a8a; border-radius: 2px; }
+.hb-t i.hot, .stack i.hot { background: var(--seal); }
+.hb-v { font-variant-numeric: tabular-nums; font-weight: 700; white-space: nowrap; }
+.hb-v small { font-weight: 400; color: var(--ink-faint); font-size: 12px; }
+.db-t { position: relative; height: 14px; }
+.db-t .line { position: absolute; top: 6px; height: 2px; background: #c9c9c9; }
+.db-t .dot { position: absolute; top: 2px; width: 10px; height: 10px; margin-left: -5px; border-radius: 50%; background: #8a8a8a; }
+.db-t .dot.hot { background: var(--seal); }
+.stack { display: flex; height: 34px; border-radius: 3px; overflow: hidden; font-size: 14px; font-weight: 700; }
+.stack i { display: flex; align-items: center; padding: 0 10px; font-style: normal; background: #e4e4e4; color: var(--ink); white-space: nowrap; }
+.stack i.hot { color: #fff; }
+.ev-list { font-size: 13.5px; color: var(--ink-soft, #555); margin: 10px 0 0; line-height: 1.7; }
+.ev-note { font-size: 13px; color: var(--ink-faint); margin: 10px 0 0; }
+.ev-src { font-size: 12px; color: var(--ink-faint); margin: 4px 0 0; }
+.edge { font-size: 14.5px; background: #f6f6f6; border-left: 3px solid var(--seal); padding: 10px 14px; margin: 10px 0; }
+.cl { font-weight: 700; } .cl-뚜렷함 { color: var(--seal); } .cl-경계 { color: var(--ink-faint); }
+@media (max-width: 520px) { .hb, .db { grid-template-columns: 5.6em 1fr auto; font-size: 13px; } .hb-v small { display: none; } }
