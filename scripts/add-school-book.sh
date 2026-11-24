@@ -28,7 +28,7 @@ if not name:
 p = "lib/data/school-books.json"
 rows = [r for r in json.load(open(p)) if r["code"] != code]
 rows.append({"code": code, "name": name, "file": f"/files/schools/jipijigi-{low}.pdf",
-             "updated": (datetime.datetime.utcnow() + datetime.timedelta(hours=9)).strftime("%Y-%m-%d"), "pages": pages or None})
+             "updated": (datetime.datetime.now(datetime.timezone.utc) + datetime.timedelta(hours=9)).strftime("%Y-%m-%d"), "pages": pages or None})
 rows.sort(key=lambda r: r["name"])
 json.dump(rows, open(p, "w"), ensure_ascii=False, indent=1)
 print(f"{name} 학교편 {pages}쪽 추가 → /download/jipijigi-{low}")
