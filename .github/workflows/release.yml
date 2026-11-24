@@ -1,0 +1,14 @@
+name: release
+on:
+  push:
+    tags: ['v*']
+permissions:
+  contents: write
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: gh release create "$GITHUB_REF_NAME" jipijigi.pdf --title "지피지기 $GITHUB_REF_NAME" --notes "무료 수리논술 총론 PDF"
+        env:
+          GH_TOKEN: ${{ github.token }}
