@@ -181,3 +181,23 @@ table.stat td.num { text-align: right; font-variant-numeric: tabular-nums; }
 .article ul, .article ol { padding-left: 1.2em; }
 .article li { margin-bottom: 8px; }
 @media (max-width: 760px) { .hero .mark { display: none; } .top { position: static; } }
+
+/* 관리자 */
+.admin h2 { font-size: 17px; margin-bottom: 10px; }
+.kpis { display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 12px; margin-bottom: 18px; }
+@media (max-width: 960px) { .kpis { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+@media (max-width: 560px) { .kpis { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+.kpi { background: var(--paper-light); border-radius: 12px; padding: 14px 16px; }
+.kpi .kl { font-size: 13px; color: var(--ink-soft); font-weight: 600; }
+.kpi .kv { font-size: 30px; font-weight: 900; color: var(--seal); letter-spacing: -0.03em; line-height: 1.2; }
+.kpi .ks { font-size: 12px; color: var(--ink-faint); }
+.agrid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0 28px; }
+@media (max-width: 860px) { .agrid { grid-template-columns: 1fr; } }
+.abox { padding: 18px 0 6px; border-top: 1px solid var(--rule); }
+.abox table.stat { margin-bottom: 18px; font-size: 14px; }
+.abar { display: inline-flex; align-items: center; gap: 8px; justify-content: flex-end; min-width: 120px; }
+.abar i { display: inline-block; height: 8px; border-radius: 999px; background: var(--seal); opacity: .75; flex: none; }
+.spark { display: flex; align-items: flex-end; gap: 3px; height: 120px; margin: 6px 0 6px; }
+.spark .sp { flex: 1; height: 100%; display: flex; flex-direction: column; justify-content: flex-end; align-items: center; position: relative; }
+.spark .sp i { display: block; width: 100%; background: var(--ink-soft); border-radius: 3px 3px 0 0; min-height: 2px; }
+.spark .sp b { position: absolute; top: -8px; width: 6px; height: 6px; border-radius: 50%; background: var(--seal); }

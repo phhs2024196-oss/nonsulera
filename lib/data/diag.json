@@ -1,0 +1,1307 @@
+{
+ "year": 2028,
+ "built": "2026-11-24",
+ "schools": [
+  {
+   "code": "GCU",
+   "name": "가천대학교",
+   "short": "가천대",
+   "quota": "1054",
+   "ratio": "논술 100",
+   "recordPct": 0,
+   "csat": [
+    {
+     "who": "인문계열, 자연계열",
+     "rule": "국어, 수학, 영어, 사회탐구, 과학탐구 중 2개 영역 등급 합 6 이내"
+    },
+    {
+     "who": "바이오로직스학과",
+     "rule": "국어, 수학, 영어, 사회탐구, 과학탐구 중 2개 영역 등급 합 5 이내"
+    },
+    {
+     "who": "의예과",
+     "rule": "국어, 수학, 영어, 과학탐구 3개 영역 각 1등급"
+    },
+    {
+     "who": "한의예과",
+     "rule": "국어, 수학, 영어, 과학탐구 2개 영역 각 1등급"
+    },
+    {
+     "who": "약학과",
+     "rule": "국어, 수학, 영어, 과학탐구 3개 영역 등급 합 5 이내"
+    }
+   ],
+   "noCsat": false,
+   "exam": {
+    "minutes": "",
+    "items": "",
+    "type": ""
+   },
+   "dates2027": [],
+   "rate2026": "32.48",
+   "src": "https://cdn013.negagea.net/dgsmidc/omr/seoul/web/univ_info2026/%EA%B0%80%EC%B2%9C%EB%8C%80%ED%95%99%EA%B5%90/%EA%B0%80%EC%B2%9C%EB%8C%80%ED%95%99%EA%B5%90_2028%ED%95%99%EB%85%84%EB%8F%84_%EB%8C%80%ED%95%99%EC%9E%85%ED%95%99%EC%A0%84%ED%98%95%EA%B3%84%ED%9A%8D.pdf"
+  },
+  {
+   "code": "CUK",
+   "name": "가톨릭대학교",
+   "short": "가톨릭대",
+   "quota": "176",
+   "ratio": "논술 100",
+   "recordPct": 0,
+   "csat": [
+    {
+     "who": "약학과",
+     "rule": "국어, 수학, 영어, 통합과학 중 3개 영역 등급 합 5 이내"
+    },
+    {
+     "who": "의예과",
+     "rule": "국어, 수학, 영어, 통합과학 중 3개 영역 등급 합 4 이내 및 한국사 4등급 이내"
+    },
+    {
+     "who": "간호학과",
+     "rule": "국어, 수학, 영어, 통합사회/통합과학 중 3개 영역 등급 합 7 이내"
+    },
+    {
+     "who": "그 외 전 모집단위",
+     "rule": "없음"
+    }
+   ],
+   "noCsat": true,
+   "exam": {
+    "minutes": "90",
+    "items": "3문항",
+    "type": "언어논술(인문사회계열 전 모집단위)"
+   },
+   "dates2027": [
+    "2026-10-11",
+    "2026-11-22"
+   ],
+   "rate2026": "13.81",
+   "src": "https://cdn013.negagea.net/dgsmidc/omr/seoul/web/univ_info2026/%EA%B0%80%ED%86%A8%EB%A6%AD%EB%8C%80%ED%95%99%EA%B5%90/%EA%B0%80%ED%86%A8%EB%A6%AD%EB%8C%80%ED%95%99%EA%B5%90_2028%ED%95%99%EB%85%84%EB%8F%84_%EB%8C%80%ED%95%99%EC%9E%85%ED%95%99%EC%A0%84%ED%98%95%EA%B3%84%ED%9A%8D.pdf"
+  },
+  {
+   "code": "KNG",
+   "name": "강남대학교",
+   "short": "강남대",
+   "quota": "278",
+   "ratio": "학생부교과 20; 논술 80",
+   "recordPct": 20,
+   "csat": [
+    {
+     "who": "전 계열",
+     "rule": "없음"
+    }
+   ],
+   "noCsat": true,
+   "exam": {
+    "minutes": "60",
+    "items": "국어 3문항(각 10점) + 수학 7문항(8점 2, 10점 3, 12점 2) = 10문항",
+    "type": "공학계"
+   },
+   "dates2027": [
+    "2026-11-20",
+    "2026-11-28"
+   ],
+   "rate2026": "",
+   "src": "https://cdn013.negagea.net/dgsmidc/omr/seoul/web/univ_info2026/%EA%B0%95%EB%82%A8%EB%8C%80%ED%95%99%EA%B5%90/%EA%B0%95%EB%82%A8%EB%8C%80%ED%95%99%EA%B5%90_2028%ED%95%99%EB%85%84%EB%8F%84_%EB%8C%80%ED%95%99%EC%9E%85%ED%95%99%EC%A0%84%ED%98%95%EA%B3%84%ED%9A%8D.pdf"
+  },
+  {
+   "code": "KKU",
+   "name": "건국대학교",
+   "short": "건국대",
+   "quota": "327",
+   "ratio": "논술 100",
+   "recordPct": 0,
+   "csat": [
+    {
+     "who": "인문/자연",
+     "rule": "한국사, 국어, 수학, 영어, 탐구(사회/과학 중 상위 1과목) 5개 영역 중 3개 영역 등급 합 8 이내"
+    },
+    {
+     "who": "수의예과",
+     "rule": "한국사, 국어, 수학, 영어, 탐구(사회/과학 2과목 평균) 5개 영역 중 3개 영역 등급 합 4 이내"
+    }
+   ],
+   "noCsat": false,
+   "exam": {
+    "minutes": "100",
+    "items": "4문항",
+    "type": "자연"
+   },
+   "dates2027": [
+    "2026-11-21"
+   ],
+   "rate2026": "58.05",
+   "src": "https://cdn013.negagea.net/dgsmidc/omr/seoul/web/univ_info2026/%EA%B1%B4%EA%B5%AD%EB%8C%80%ED%95%99%EA%B5%90/%EA%B1%B4%EA%B5%AD%EB%8C%80%ED%95%99%EA%B5%90_2028%ED%95%99%EB%85%84%EB%8F%84_%EB%8C%80%ED%95%99%EC%9E%85%ED%95%99%EC%A0%84%ED%98%95%EA%B3%84%ED%9A%8D.pdf"
+  },
+  {
+   "code": "KGU",
+   "name": "경기대학교",
+   "short": "경기대",
+   "quota": "239",
+   "ratio": "논술 90; 학생부교과 10",
+   "recordPct": 10,
+   "csat": [
+    {
+     "who": "전 모집단위",
+     "rule": "없음(수능최저학력기준 미적용)"
+    }
+   ],
+   "noCsat": false,
+   "exam": {
+    "minutes": "100",
+    "items": "2문항(각 문항별 소문항 있을 수 있음)",
+    "type": "수리 논술"
+   },
+   "dates2027": [
+    "2026-11-20",
+    "2026-11-27"
+   ],
+   "rate2026": "",
+   "src": "https://cdn013.negagea.net/dgsmidc/omr/seoul/web/univ_info2026/%EA%B2%BD%EA%B8%B0%EB%8C%80%ED%95%99%EA%B5%90/%EA%B2%BD%EA%B8%B0%EB%8C%80%ED%95%99%EA%B5%90_2028%ED%95%99%EB%85%84%EB%8F%84_%EB%8C%80%ED%95%99%EC%9E%85%ED%95%99%EC%A0%84%ED%98%95%EA%B3%84%ED%9A%8D.pdf"
+  },
+  {
+   "code": "KNU",
+   "name": "경북대학교",
+   "short": "경북대",
+   "quota": "551",
+   "ratio": "논술 70; 학생부교과 30",
+   "recordPct": 30,
+   "csat": [
+    {
+     "who": "IT대학",
+     "rule": "국어, 수학, 영어, 탐구(1과목) 중 수학 포함 2개 영역 등급 합 5 이내"
+    },
+    {
+     "who": "경상대학, 사범대학, 간호대학, 행정학부, 자율전공학부",
+     "rule": "국어, 수학, 영어, 탐구(1과목) 중 상위 2개 영역 등급 합 5 이내"
+    },
+    {
+     "who": "공과대학, 첨단기술융합대학, 공학첨단자율학부",
+     "rule": "국어, 수학, 영어, 탐구(1과목) 중 수학 포함 2개 영역 등급 합 6 이내"
+    },
+    {
+     "who": "인문대학, 사회과학대학, 자연과학대학, 농업생명과학대학, 생활과학대학",
+     "rule": "국어, 수학, 영어, 탐구(1과목) 중 상위 2개 영역 등급 합 6 이내"
+    },
+    {
+     "who": "의예과, 치의예과",
+     "rule": "국어, 수학, 영어, 탐구(2과목) 중 수학 포함 3개 영역 등급 합 4 이내"
+    },
+    {
+     "who": "수의예과, 약학과",
+     "rule": "국어, 수학, 영어, 탐구(2과목) 중 수학 포함 3개 영역 등급 합 5 이내"
+    },
+    {
+     "who": "전자공학부 모바일공학전공",
+     "rule": "수학, 탐구 포함 3개 영역 등급 합 5 이내"
+    }
+   ],
+   "noCsat": false,
+   "exam": {
+    "minutes": "100",
+    "items": "3문항 내외(소문항 있음)",
+    "type": "자연계열Ⅰ"
+   },
+   "dates2027": [
+    "2026-11-28"
+   ],
+   "rate2026": "11.79",
+   "src": "https://cdn013.negagea.net/dgsmidc/omr/seoul/web/univ_info2026/%EA%B2%BD%EB%B6%81%EB%8C%80%ED%95%99%EA%B5%90/%EA%B2%BD%EB%B6%81%EB%8C%80%ED%95%99%EA%B5%90_2028%ED%95%99%EB%85%84%EB%8F%84_%EB%8C%80%ED%95%99%EC%9E%85%ED%95%99%EC%A0%84%ED%98%95%EA%B3%84%ED%9A%8D.pdf"
+  },
+  {
+   "code": "KHU",
+   "name": "경희대학교",
+   "short": "경희대",
+   "quota": "469",
+   "ratio": "논술고사 100",
+   "recordPct": 0,
+   "csat": [
+    {
+     "who": "인문/자연, 자율/자유전공학부 [의예과·한의예과(인문·자연)·치의예과·약학과 제외]",
+     "rule": "국어, 수학, 영어, 통합사회/통합과학(상위 1과목) 중 2개 영역 등급의 합이 5 이내이고, 한국사 5등급 이내"
+    },
+    {
+     "who": "의예과, 한의예과(인문·자연), 치의예과, 약학과",
+     "rule": "국어, 수학, 영어, 통합사회/통합과학(상위 1과목) 중 3개 영역 등급의 합이 4 이내이고, 한국사 5등급 이내"
+    },
+    {
+     "who": "체육",
+     "rule": "국어, 수학, 영어, 통합사회/통합과학(상위 1과목) 중 1개 영역 이상 3등급 이내"
+    },
+    {
+     "who": "전체",
+     "rule": ""
+    }
+   ],
+   "noCsat": false,
+   "exam": {
+    "minutes": "120",
+    "items": "수학 6문항 내외",
+    "type": "자연계"
+   },
+   "dates2027": [
+    "2026-11-21",
+    "2026-11-22"
+   ],
+   "rate2026": "35.53",
+   "src": "https://cdn013.negagea.net/dgsmidc/omr/seoul/web/univ_info2026/%EA%B2%BD%ED%9D%AC%EB%8C%80%ED%95%99%EA%B5%90/%EA%B2%BD%ED%9D%AC%EB%8C%80%ED%95%99%EA%B5%90_2028%ED%95%99%EB%85%84%EB%8F%84_%EB%8C%80%ED%95%99%EC%9E%85%ED%95%99%EC%A0%84%ED%98%95%EA%B3%84%ED%9A%8D.pdf"
+  },
+  {
+   "code": "KU",
+   "name": "고려대학교",
+   "short": "고려대",
+   "quota": "367",
+   "ratio": "논술 100",
+   "recordPct": 0,
+   "csat": [
+    {
+     "who": "인문·자연계열",
+     "rule": "국어, 수학, 영어, 탐구 4개 영역 등급의 합이 8 이내 및 한국사 4등급 이내"
+    }
+   ],
+   "noCsat": false,
+   "exam": {
+    "minutes": "80",
+    "items": "",
+    "type": "자연계"
+   },
+   "dates2027": [
+    "2026-11-21",
+    "2026-11-22"
+   ],
+   "rate2026": "",
+   "src": "https://cdn013.negagea.net/dgsmidc/omr/seoul/web/univ_info2026/%EA%B3%A0%EB%A0%A4%EB%8C%80%ED%95%99%EA%B5%90/%EA%B3%A0%EB%A0%A4%EB%8C%80%ED%95%99%EA%B5%90_2028%ED%95%99%EB%85%84%EB%8F%84_%EB%8C%80%ED%95%99%EC%9E%85%ED%95%99%EC%A0%84%ED%98%95%EA%B3%84%ED%9A%8D.pdf"
+  },
+  {
+   "code": "KUS",
+   "name": "고려대학교(세종)",
+   "short": "고려대(세종)",
+   "quota": "210",
+   "ratio": "논술 100",
+   "recordPct": 0,
+   "csat": [
+    {
+     "who": "전 모집단위(약학과 제외)",
+     "rule": "국어, 수학, 영어, 사탐/과탐(상위 1과목) 중 1개 영역 3등급 이내"
+    },
+    {
+     "who": "약학과",
+     "rule": "국어, 수학, 영어, 과탐 중 3개 영역 등급 합이 5 이내"
+    }
+   ],
+   "noCsat": false,
+   "exam": {
+    "minutes": "120",
+    "items": "6문제 내외",
+    "type": "자연Ⅰ 수리논술Ⅰ(자연계열 전 모집단위(약학과 제외), 자유전공학부(과학기술))"
+   },
+   "dates2027": [
+    "2026-11-28"
+   ],
+   "rate2026": "2.04",
+   "src": "https://cdn013.negagea.net/dgsmidc/omr/seoul/web/univ_info2026/%EA%B3%A0%EB%A0%A4%EB%8C%80%ED%95%99%EA%B5%90%28%EC%84%B8%EC%A2%85%29/%EA%B3%A0%EB%A0%A4%EB%8C%80%ED%95%99%EA%B5%90%28%EC%84%B8%EC%A2%85%29_2028%ED%95%99%EB%85%84%EB%8F%84_%EB%8C%80%ED%95%99%EC%9E%85%ED%95%99%EC%A0%84%ED%98%95%EA%B3%84%ED%9A%8D.pdf"
+  },
+  {
+   "code": "KW",
+   "name": "광운대학교",
+   "short": "광운대",
+   "quota": "181",
+   "ratio": "논술고사 80; 학생부교과 20",
+   "recordPct": 20,
+   "csat": [
+    {
+     "who": "전 모집단위",
+     "rule": "수능최저학력기준은 학생부교과[지역균형전형]에 한해 적용(논술은 없음)"
+    }
+   ],
+   "noCsat": false,
+   "exam": {
+    "minutes": "120",
+    "items": "수리 논술 2문제(각 문제당 5개 내외 소문제)",
+    "type": "자연"
+   },
+   "dates2027": [
+    "2026-11-28",
+    "2026-11-29"
+   ],
+   "rate2026": "24.55",
+   "src": "https://cdn013.negagea.net/dgsmidc/omr/seoul/web/univ_info2026/%EA%B4%91%EC%9A%B4%EB%8C%80%ED%95%99%EA%B5%90/%EA%B4%91%EC%9A%B4%EB%8C%80%ED%95%99%EA%B5%90_2028%ED%95%99%EB%85%84%EB%8F%84_%EB%8C%80%ED%95%99%EC%9E%85%ED%95%99%EC%A0%84%ED%98%95%EA%B3%84%ED%9A%8D.pdf"
+  },
+  {
+   "code": "KMU",
+   "name": "국민대학교",
+   "short": "국민대",
+   "quota": "237",
+   "ratio": "논술 100",
+   "recordPct": 0,
+   "csat": [
+    {
+     "who": "인문계열·자연계열",
+     "rule": "국어, 수학, 영어, 탐구영역 중 2개 영역 등급 합 6 이내"
+    }
+   ],
+   "noCsat": false,
+   "exam": {
+    "minutes": "90",
+    "items": "국어 2문항 + 수학 8문항 (반영비율 국어 20%, 수학 80%)",
+    "type": "자연계"
+   },
+   "dates2027": [
+    "2026-12-05",
+    "2026-12-06"
+   ],
+   "rate2026": "",
+   "src": "https://cdn013.negagea.net/dgsmidc/omr/seoul/web/univ_info2026/%EA%B5%AD%EB%AF%BC%EB%8C%80%ED%95%99%EA%B5%90/%EA%B5%AD%EB%AF%BC%EB%8C%80%ED%95%99%EA%B5%90_2028%ED%95%99%EB%85%84%EB%8F%84_%EB%8C%80%ED%95%99%EC%9E%85%ED%95%99%EC%A0%84%ED%98%95%EA%B3%84%ED%9A%8D.pdf"
+  },
+  {
+   "code": "DKU",
+   "name": "단국대학교(죽전)",
+   "short": "단국대(죽전)",
+   "quota": "300",
+   "ratio": "논술 90; 학생부교과 10",
+   "recordPct": 10,
+   "csat": [
+    {
+     "who": "전 모집단위(죽전캠퍼스)",
+     "rule": "없음"
+    }
+   ],
+   "noCsat": true,
+   "exam": {
+    "minutes": "120",
+    "items": "수학 통합교과형 2문제(문제별 소논제 있음)",
+    "type": "자연계열"
+   },
+   "dates2027": [
+    "2026-10-17",
+    "2026-10-18"
+   ],
+   "rate2026": "14.56",
+   "src": "https://cdn013.negagea.net/dgsmidc/omr/seoul/web/univ_info2026/%EB%8B%A8%EA%B5%AD%EB%8C%80%ED%95%99%EA%B5%90%28%EC%A3%BD%EC%A0%84%29/%EB%8B%A8%EA%B5%AD%EB%8C%80%ED%95%99%EA%B5%90%28%EC%A3%BD%EC%A0%84%29_2028%ED%95%99%EB%85%84%EB%8F%84_%EB%8C%80%ED%95%99%EC%9E%85%ED%95%99%EC%A0%84%ED%98%95%EA%B3%84%ED%9A%8D.pdf"
+  },
+  {
+   "code": "DSW",
+   "name": "덕성여자대학교",
+   "short": "덕성여대",
+   "quota": "115",
+   "ratio": "논술고사 100",
+   "recordPct": 0,
+   "csat": [
+    {
+     "who": "글로벌융합대학",
+     "rule": "국어, 수학, 영어, 사회·과학탐구[상위 1과목] 중 2개 영역 등급 합 7 이내"
+    },
+    {
+     "who": "과학기술대학",
+     "rule": "국어, 수학, 영어, 사회·과학탐구[상위 1과목] 중 2개 영역 등급 합 7 이내"
+    },
+    {
+     "who": "약학대학",
+     "rule": "국어, 수학, 영어, 사회·과학탐구[2과목 평균] 중 수학을 포함한 3개 영역 등급 합 5 이내"
+    }
+   ],
+   "noCsat": true,
+   "exam": {
+    "minutes": "90",
+    "items": "2문항(소문항 최대 3문항)",
+    "type": "자연계열Ⅰ(과학기술대학)"
+   },
+   "dates2027": [
+    "2026-11-29"
+   ],
+   "rate2026": "19.42",
+   "src": "https://cdn013.negagea.net/dgsmidc/omr/seoul/web/univ_info2026/%EB%8D%95%EC%84%B1%EC%97%AC%EC%9E%90%EB%8C%80%ED%95%99%EA%B5%90/%EB%8D%95%EC%84%B1%EC%97%AC%EC%9E%90%EB%8C%80%ED%95%99%EA%B5%90_2028%ED%95%99%EB%85%84%EB%8F%84_%EB%8C%80%ED%95%99%EC%9E%85%ED%95%99%EC%A0%84%ED%98%95%EA%B3%84%ED%9A%8D.pdf"
+  },
+  {
+   "code": "DGU",
+   "name": "동국대학교",
+   "short": "동국대",
+   "quota": "291",
+   "ratio": "논술 70; 학생부교과 20; 출결 10",
+   "recordPct": 30,
+   "csat": [
+    {
+     "who": "전체 모집단위(약학과 제외)",
+     "rule": "국어/수학/영어/사탐/과탐 2개 영역 등급 합 5 이내 [한국사 4등급]"
+    },
+    {
+     "who": "약학과",
+     "rule": "국어/수학/영어/사탐/과탐 3개 영역 등급 합 4 이내 [한국사 4등급]"
+    }
+   ],
+   "noCsat": true,
+   "exam": {
+    "minutes": "90",
+    "items": "3문항(소문항 출제 가능)",
+    "type": "자연계열"
+   },
+   "dates2027": [
+    "2026-11-22"
+   ],
+   "rate2026": "29.60",
+   "src": "https://cdn013.negagea.net/dgsmidc/omr/seoul/web/univ_info2026/%EB%8F%99%EA%B5%AD%EB%8C%80%ED%95%99%EA%B5%90/%EB%8F%99%EA%B5%AD%EB%8C%80%ED%95%99%EA%B5%90_2028%ED%95%99%EB%85%84%EB%8F%84_%EB%8C%80%ED%95%99%EC%9E%85%ED%95%99%EC%A0%84%ED%98%95%EA%B3%84%ED%9A%8D.pdf"
+  },
+  {
+   "code": "DDW",
+   "name": "동덕여자대학교",
+   "short": "동덕여대",
+   "quota": "232",
+   "ratio": "논술 100",
+   "recordPct": 0,
+   "csat": [
+    {
+     "who": "전 모집단위",
+     "rule": "2028학년도 수능 4개 영역[국어, 영어, 수학, 탐구(사회·과학 중 상위 1과목)] 중 2개 영역의 합이 7등급 이내"
+    }
+   ],
+   "noCsat": false,
+   "exam": {
+    "minutes": "60",
+    "items": "8문항(수학 6문항, 국어 2문항), 세부문항 있을 수 있음",
+    "type": "자연"
+   },
+   "dates2027": [
+    "2026-11-28"
+   ],
+   "rate2026": "6.11",
+   "src": "https://cdn013.negagea.net/dgsmidc/omr/seoul/web/univ_info2026/%EB%8F%99%EB%8D%95%EC%97%AC%EC%9E%90%EB%8C%80%ED%95%99%EA%B5%90/%EB%8F%99%EB%8D%95%EC%97%AC%EC%9E%90%EB%8C%80%ED%95%99%EA%B5%90_2028%ED%95%99%EB%85%84%EB%8F%84_%EB%8C%80%ED%95%99%EC%9E%85%ED%95%99%EC%A0%84%ED%98%95%EA%B3%84%ED%9A%8D.pdf"
+  },
+  {
+   "code": "SYU",
+   "name": "삼육대학교",
+   "short": "삼육대",
+   "quota": "251",
+   "ratio": "논술 100",
+   "recordPct": 0,
+   "csat": [
+    {
+     "who": "일반학과(약학과 제외)",
+     "rule": "국어, 영어, 수학, 탐구(1과목) 1개 영역 3등급 이내"
+    },
+    {
+     "who": "약학과",
+     "rule": "국어, 영어, 수학, 과학탐구(1과목) 3개 영역 합 5등급 이내"
+    }
+   ],
+   "noCsat": false,
+   "exam": {
+    "minutes": "80",
+    "items": "국어 5문항·수학 8문항(각 문항 10점)",
+    "type": "자연계열"
+   },
+   "dates2027": [
+    "2026-11-23",
+    "2026-11-24"
+   ],
+   "rate2026": "",
+   "src": "https://cdn013.negagea.net/dgsmidc/omr/seoul/web/univ_info2026/%EC%82%BC%EC%9C%A1%EB%8C%80%ED%95%99%EA%B5%90/%EC%82%BC%EC%9C%A1%EB%8C%80%ED%95%99%EA%B5%90_2028%ED%95%99%EB%85%84%EB%8F%84_%EB%8C%80%ED%95%99%EC%9E%85%ED%95%99%EC%A0%84%ED%98%95%EA%B3%84%ED%9A%8D.pdf"
+  },
+  {
+   "code": "SMU",
+   "name": "상명대학교",
+   "short": "상명대",
+   "quota": "98",
+   "ratio": "학생부교과 10; 논술 90",
+   "recordPct": 10,
+   "csat": [
+    {
+     "who": "전 모집단위",
+     "rule": "없음"
+    }
+   ],
+   "noCsat": true,
+   "exam": {
+    "minutes": "60",
+    "items": "국어 2문항+수학 8문항(계 10문항)",
+    "type": "자연계열(애니메이션전공 포함)"
+   },
+   "dates2027": [
+    "2026-10-30",
+    "2026-10-31"
+   ],
+   "rate2026": "",
+   "src": "https://cdn013.negagea.net/dgsmidc/omr/seoul/web/univ_info2026/%EC%83%81%EB%AA%85%EB%8C%80%ED%95%99%EA%B5%90/%EC%83%81%EB%AA%85%EB%8C%80%ED%95%99%EA%B5%90_2028%ED%95%99%EB%85%84%EB%8F%84_%EB%8C%80%ED%95%99%EC%9E%85%ED%95%99%EC%A0%84%ED%98%95%EA%B3%84%ED%9A%8D.pdf"
+  },
+  {
+   "code": "SGU",
+   "name": "서강대학교",
+   "short": "서강대",
+   "quota": "170",
+   "ratio": "논술 80; 교과(정량) 10; 출결(정량) 10",
+   "recordPct": 20,
+   "csat": [
+    {
+     "who": "전 계열",
+     "rule": "국어, 수학, 영어, 탐구(1과목) 4개 영역 중 3개 영역 등급합 7 이내, 한국사 4등급 이내"
+    }
+   ],
+   "noCsat": true,
+   "exam": {
+    "minutes": "100",
+    "items": "문제1(40%)·문제2(60%), 제시문과 논제",
+    "type": "자연계열(수리형)"
+   },
+   "dates2027": [
+    "2026-11-21",
+    "2026-11-22"
+   ],
+   "rate2026": "",
+   "src": "https://cdn013.negagea.net/dgsmidc/omr/seoul/web/univ_info2026/%EC%84%9C%EA%B0%95%EB%8C%80%ED%95%99%EA%B5%90/%EC%84%9C%EA%B0%95%EB%8C%80%ED%95%99%EA%B5%90_2028%ED%95%99%EB%85%84%EB%8F%84_%EB%8C%80%ED%95%99%EC%9E%85%ED%95%99%EC%A0%84%ED%98%95%EA%B3%84%ED%9A%8D.pdf"
+  },
+  {
+   "code": "SKU",
+   "name": "서경대학교",
+   "short": "서경대",
+   "quota": "256",
+   "ratio": "논술 100",
+   "recordPct": 0,
+   "csat": [
+    {
+     "who": "전 모집단위",
+     "rule": "없음"
+    }
+   ],
+   "noCsat": true,
+   "exam": {
+    "minutes": "60",
+    "items": "8문항(국어 4, 수학 4), 문항당 10점",
+    "type": "계열 구분 없음(통합 약술형)"
+   },
+   "dates2027": [
+    "2026-11-01"
+   ],
+   "rate2026": "13.98",
+   "src": "https://cdn013.negagea.net/dgsmidc/omr/seoul/web/univ_info2026/%EC%84%9C%EA%B2%BD%EB%8C%80%ED%95%99%EA%B5%90/%EC%84%9C%EA%B2%BD%EB%8C%80%ED%95%99%EA%B5%90_2028%ED%95%99%EB%85%84%EB%8F%84_%EB%8C%80%ED%95%99%EC%9E%85%ED%95%99%EC%A0%84%ED%98%95%EA%B3%84%ED%9A%8D.pdf"
+  },
+  {
+   "code": "SNUT",
+   "name": "서울과학기술대학교",
+   "short": "서울과기대",
+   "quota": "150",
+   "ratio": "학생부교과 20; 논술 80",
+   "recordPct": 20,
+   "csat": [
+    {
+     "who": "전체 모집단위",
+     "rule": "없음"
+    }
+   ],
+   "noCsat": true,
+   "exam": {
+    "minutes": "100",
+    "items": "대문항 3개(대문항 1개에 소문항 2~5개 내외)",
+    "type": "자연계열(ST자유전공학부)"
+   },
+   "dates2027": [
+    "2026-11-23"
+   ],
+   "rate2026": "",
+   "src": "https://cdn013.negagea.net/dgsmidc/omr/seoul/web/univ_info2026/%EC%84%9C%EC%9A%B8%EA%B3%BC%ED%95%99%EA%B8%B0%EC%88%A0%EB%8C%80%ED%95%99%EA%B5%90/%EC%84%9C%EC%9A%B8%EA%B3%BC%ED%95%99%EA%B8%B0%EC%88%A0%EB%8C%80%ED%95%99%EA%B5%90_2028%ED%95%99%EB%85%84%EB%8F%84_%EB%8C%80%ED%95%99%EC%9E%85%ED%95%99%EC%A0%84%ED%98%95%EA%B3%84%ED%9A%8D.pdf"
+  },
+  {
+   "code": "UOS",
+   "name": "서울시립대학교",
+   "short": "서울시립대",
+   "quota": "86",
+   "ratio": "논술 100",
+   "recordPct": 0,
+   "csat": [
+    {
+     "who": "논술전형 전체",
+     "rule": "국어, 수학, 영어, 탐구(사회/과학 중 상위 1과목) 중 3개 영역 등급합 7 이내 및 한국사 4등급 이내"
+    }
+   ],
+   "noCsat": true,
+   "exam": {
+    "minutes": "120",
+    "items": "4문항",
+    "type": "자연계열(수리논술)"
+   },
+   "dates2027": [
+    "2026-10-03"
+   ],
+   "rate2026": "",
+   "src": "https://cdn013.negagea.net/dgsmidc/omr/seoul/web/univ_info2026/%EC%84%9C%EC%9A%B8%EC%8B%9C%EB%A6%BD%EB%8C%80%ED%95%99%EA%B5%90/%EC%84%9C%EC%9A%B8%EC%8B%9C%EB%A6%BD%EB%8C%80%ED%95%99%EA%B5%90_2028%ED%95%99%EB%85%84%EB%8F%84_%EB%8C%80%ED%95%99%EC%9E%85%ED%95%99%EC%A0%84%ED%98%95%EA%B3%84%ED%9A%8D.pdf"
+  },
+  {
+   "code": "SWU",
+   "name": "서울여자대학교",
+   "short": "서울여대",
+   "quota": "120",
+   "ratio": "논술 80; 학생부교과 20",
+   "recordPct": 20,
+   "csat": [
+    {
+     "who": "전체",
+     "rule": "없음"
+    }
+   ],
+   "noCsat": true,
+   "exam": {
+    "minutes": "90",
+    "items": "2~4문항",
+    "type": "자연계열 수리논술"
+   },
+   "dates2027": [
+    "2026-11-21"
+   ],
+   "rate2026": "25.30",
+   "src": "https://cdn013.negagea.net/dgsmidc/omr/seoul/web/univ_info2026/%EC%84%9C%EC%9A%B8%EC%97%AC%EC%9E%90%EB%8C%80%ED%95%99%EA%B5%90/%EC%84%9C%EC%9A%B8%EC%97%AC%EC%9E%90%EB%8C%80%ED%95%99%EA%B5%90_2028%ED%95%99%EB%85%84%EB%8F%84_%EB%8C%80%ED%95%99%EC%9E%85%ED%95%99%EC%A0%84%ED%98%95%EA%B3%84%ED%9A%8D.pdf"
+  },
+  {
+   "code": "SKKU",
+   "name": "성균관대학교",
+   "short": "성균관대",
+   "quota": "376",
+   "ratio": "논술 100",
+   "recordPct": 0,
+   "csat": [
+    {
+     "who": "글로벌AI융합학부, 인문과학계열, 사회과학계열, 경영학과, 자연과학계열, 공학계열, 건설환경공학부",
+     "rule": "국어, 수학, 영어, 사회탐구, 과학탐구 5개 영역(과목) 중 3개 등급합 6등급 이내"
+    },
+    {
+     "who": "자유전공계열, 글로벌리더학부, 글로벌경제학과, 글로벌경영학과, 전자전기정보공학부, 반도체시스템공학과, 컴퓨터공학과, 글로벌바이오메디컬공학과, 지능형소프트웨어학과, 약학과, 반도체융합공학과, 에너지학과",
+     "rule": "국어, 수학, 영어, 사회탐구, 과학탐구 5개 영역(과목) 중 3개 등급합 5등급 이내"
+    },
+    {
+     "who": "의예과",
+     "rule": "국어, 수학, 영어, 탐구(2개 과목 평균) 4개 영역 등급합 5등급 이내"
+    },
+    {
+     "who": "언어형 지원 - 자연과학계열, 전자전기정보공학부, 공학계열, 건설환경공학부, 컴퓨터공학과, 글로벌AI융합학부",
+     "rule": "수능 최저학력기준 적용 시 수학 영역 필수 반영"
+    }
+   ],
+   "noCsat": false,
+   "exam": {
+    "minutes": "100",
+    "items": "3문제",
+    "type": "수리형"
+   },
+   "dates2027": [
+    "2026-11-21",
+    "2026-11-22"
+   ],
+   "rate2026": "106.24",
+   "src": "https://cdn013.negagea.net/dgsmidc/omr/seoul/web/univ_info2026/%EC%84%B1%EA%B7%A0%EA%B4%80%EB%8C%80%ED%95%99%EA%B5%90/%EC%84%B1%EA%B7%A0%EA%B4%80%EB%8C%80%ED%95%99%EA%B5%90_2028%ED%95%99%EB%85%84%EB%8F%84_%EB%8C%80%ED%95%99%EC%9E%85%ED%95%99%EC%A0%84%ED%98%95%EA%B3%84%ED%9A%8D.pdf"
+  },
+  {
+   "code": "SSWU",
+   "name": "성신여자대학교",
+   "short": "성신여대",
+   "quota": "158",
+   "ratio": "논술 100",
+   "recordPct": 0,
+   "csat": [
+    {
+     "who": "전 모집단위",
+     "rule": "수능 지정영역 4개(국어, 영어, 수학 및 사회/과학/직업 중 상위 1과목) 중 2개 영역 합이 7등급 이내"
+    }
+   ],
+   "noCsat": false,
+   "exam": {
+    "minutes": "100",
+    "items": "4문항 이내(각 문항은 2~4개 하위 문제 포함)",
+    "type": "자연계"
+   },
+   "dates2027": [
+    "2026-10-03",
+    "2026-10-04"
+   ],
+   "rate2026": "",
+   "src": "https://cdn013.negagea.net/dgsmidc/omr/seoul/web/univ_info2026/%EC%84%B1%EC%8B%A0%EC%97%AC%EC%9E%90%EB%8C%80%ED%95%99%EA%B5%90/%EC%84%B1%EC%8B%A0%EC%97%AC%EC%9E%90%EB%8C%80%ED%95%99%EA%B5%90_2028%ED%95%99%EB%85%84%EB%8F%84_%EB%8C%80%ED%95%99%EC%9E%85%ED%95%99%EC%A0%84%ED%98%95%EA%B3%84%ED%9A%8D.pdf"
+  },
+  {
+   "code": "SJU",
+   "name": "세종대학교",
+   "short": "세종대",
+   "quota": "344",
+   "ratio": "논술고사 100",
+   "recordPct": 0,
+   "csat": [
+    {
+     "who": "자유전공학부, 인문계열, 자연계열",
+     "rule": "국어, 수학, 영어, 탐구(사회/과학탐구 중 1과목) 중 2개 영역 등급의 합이 5 이내"
+    }
+   ],
+   "noCsat": false,
+   "exam": {
+    "minutes": "120",
+    "items": "통합교과형(국어·사회 지문 + 수학 단원 개념)",
+    "type": "자유전공학부"
+   },
+   "dates2027": [
+    "2026-11-28",
+    "2026-11-29"
+   ],
+   "rate2026": "27.12",
+   "src": "https://cdn013.negagea.net/dgsmidc/omr/seoul/web/univ_info2026/%EC%84%B8%EC%A2%85%EB%8C%80%ED%95%99%EA%B5%90/%EC%84%B8%EC%A2%85%EB%8C%80%ED%95%99%EA%B5%90_2028%ED%95%99%EB%85%84%EB%8F%84_%EB%8C%80%ED%95%99%EC%9E%85%ED%95%99%EC%A0%84%ED%98%95%EA%B3%84%ED%9A%8D.pdf"
+  },
+  {
+   "code": "USW",
+   "name": "수원대학교",
+   "short": "수원대",
+   "quota": "434",
+   "ratio": "논술 100",
+   "recordPct": 0,
+   "csat": [
+    {
+     "who": "전 계열",
+     "rule": "없음"
+    }
+   ],
+   "noCsat": true,
+   "exam": {
+    "minutes": "80",
+    "items": "국어 5문항 + 수학 10문항 = 15문항(각 10점, 대소문항 구분 없음)",
+    "type": "자연계열"
+   },
+   "dates2027": [
+    "2026-11-21",
+    "2026-11-22"
+   ],
+   "rate2026": "13.08",
+   "src": "https://cdn013.negagea.net/dgsmidc/omr/seoul/web/univ_info2026/%EC%88%98%EC%9B%90%EB%8C%80%ED%95%99%EA%B5%90/%EC%88%98%EC%9B%90%EB%8C%80%ED%95%99%EA%B5%90_2028%ED%95%99%EB%85%84%EB%8F%84_%EB%8C%80%ED%95%99%EC%9E%85%ED%95%99%EC%A0%84%ED%98%95%EA%B3%84%ED%9A%8D.pdf"
+  },
+  {
+   "code": "SMWU",
+   "name": "숙명여자대학교",
+   "short": "숙명여대",
+   "quota": "214",
+   "ratio": "논술 85; 학생부교과 15",
+   "recordPct": 15,
+   "csat": [
+    {
+     "who": "인문계/자연계(약학부 제외)",
+     "rule": "4개 영역 중 2개 영역 등급 합 5 이내"
+    },
+    {
+     "who": "약학부",
+     "rule": "4개 영역 중 3개 영역 등급 합 4 이내"
+    }
+   ],
+   "noCsat": false,
+   "exam": {
+    "minutes": "100",
+    "items": "자연계열 3문항(세부문항 있음)",
+    "type": "자연계(의류학과 제외)"
+   },
+   "dates2027": [
+    "2026-11-21",
+    "2026-11-21~22"
+   ],
+   "rate2026": "33.34",
+   "src": "https://cdn013.negagea.net/dgsmidc/omr/seoul/web/univ_info2026/%EC%88%99%EB%AA%85%EC%97%AC%EC%9E%90%EB%8C%80%ED%95%99%EA%B5%90/%EC%88%99%EB%AA%85%EC%97%AC%EC%9E%90%EB%8C%80%ED%95%99%EA%B5%90_2028%ED%95%99%EB%85%84%EB%8F%84_%EB%8C%80%ED%95%99%EC%9E%85%ED%95%99%EC%A0%84%ED%98%95%EA%B3%84%ED%9A%8D.pdf"
+  },
+  {
+   "code": "SSU",
+   "name": "숭실대학교",
+   "short": "숭실대",
+   "quota": "240",
+   "ratio": "논술 90; 학생부 교과 10",
+   "recordPct": 10,
+   "csat": [
+    {
+     "who": "전 계열(인문·경상·자연)",
+     "rule": "국어(화법과 작문, 언어와 매체 중 택1), 수학(확률과 통계, 미적분, 기하 중 택1), 영어, 사회/과학탐구(1과목) 중 2개 영역 등급 합 6등급 이내"
+    }
+   ],
+   "noCsat": false,
+   "exam": {
+    "minutes": "100",
+    "items": "2~4문제",
+    "type": "자연계열"
+   },
+   "dates2027": [
+    "2026-11-21"
+   ],
+   "rate2026": "37.98",
+   "src": "https://cdn013.negagea.net/dgsmidc/omr/seoul/web/univ_info2026/%EC%88%AD%EC%8B%A4%EB%8C%80%ED%95%99%EA%B5%90/%EC%88%AD%EC%8B%A4%EB%8C%80%ED%95%99%EA%B5%90_2028%ED%95%99%EB%85%84%EB%8F%84_%EB%8C%80%ED%95%99%EC%9E%85%ED%95%99%EC%A0%84%ED%98%95%EA%B3%84%ED%9A%8D.pdf"
+  },
+  {
+   "code": "SHU",
+   "name": "신한대학교",
+   "short": "신한대",
+   "quota": "169",
+   "ratio": "논술 100",
+   "recordPct": 0,
+   "csat": [
+    {
+     "who": "전 모집단위",
+     "rule": "없음"
+    }
+   ],
+   "noCsat": true,
+   "exam": {
+    "minutes": "80",
+    "items": "국어 7문항 + 수학 7문항 = 14문항(문항당 10~15점)",
+    "type": "전 계열"
+   },
+   "dates2027": [
+    "2026-11-29"
+   ],
+   "rate2026": "9.93",
+   "src": "https://cdn013.negagea.net/dgsmidc/omr/seoul/web/univ_info2026/%EC%8B%A0%ED%95%9C%EB%8C%80%ED%95%99%EA%B5%90/%EC%8B%A0%ED%95%9C%EB%8C%80%ED%95%99%EA%B5%90_2028%ED%95%99%EB%85%84%EB%8F%84_%EB%8C%80%ED%95%99%EC%9E%85%ED%95%99%EC%A0%84%ED%98%95%EA%B3%84%ED%9A%8D.pdf"
+  },
+  {
+   "code": "AJOU",
+   "name": "아주대학교",
+   "short": "아주대",
+   "quota": "224",
+   "ratio": "논술 90; 학생부교과 10",
+   "recordPct": 10,
+   "csat": [
+    {
+     "who": "의학과",
+     "rule": "국어, 수학, 영어, 탐구(과탐, 사탐 평균) 4개 영역 등급 합 6이내"
+    },
+    {
+     "who": "약학과",
+     "rule": "국어, 수학, 영어, 탐구(과탐, 사탐 평균) 중 3개 영역 등급 합 5이내"
+    },
+    {
+     "who": "그 외 모집단위",
+     "rule": "없음"
+    }
+   ],
+   "noCsat": true,
+   "exam": {
+    "minutes": "120",
+    "items": "2문항(문항별 세부문제 출제)",
+    "type": "자연계열(약학과 포함) 수리논술"
+   },
+   "dates2027": [
+    "2026-12-05",
+    "2026-12-06"
+   ],
+   "rate2026": "43.29",
+   "src": "https://cdn013.negagea.net/dgsmidc/omr/seoul/web/univ_info2026/%EC%95%84%EC%A3%BC%EB%8C%80%ED%95%99%EA%B5%90/%EC%95%84%EC%A3%BC%EB%8C%80%ED%95%99%EA%B5%90_2028%ED%95%99%EB%85%84%EB%8F%84_%EB%8C%80%ED%95%99%EC%9E%85%ED%95%99%EC%A0%84%ED%98%95%EA%B3%84%ED%9A%8D.pdf"
+  },
+  {
+   "code": "YONSEI",
+   "name": "연세대학교",
+   "short": "연세대",
+   "quota": "334",
+   "ratio": "논술성적 100",
+   "recordPct": 0,
+   "csat": [
+    {
+     "who": "전 모집단위(약학과 제외)",
+     "rule": "국어, 수학, 사회탐구, 과학탐구 3개 과목 등급 합 6 이내(국어, 수학 모두 포함), 영어 3등급 이내, 한국사 4등급 이내"
+    },
+    {
+     "who": "약학과",
+     "rule": "국어, 수학, 사회탐구, 과학탐구 3개 과목 등급 합 5 이내(국어, 수학 모두 포함), 영어 3등급 이내, 한국사 4등급 이내"
+    }
+   ],
+   "noCsat": false,
+   "exam": {
+    "minutes": "",
+    "items": "",
+    "type": "자연·통합계열"
+   },
+   "dates2027": [],
+   "rate2026": "",
+   "src": "https://cdn013.negagea.net/dgsmidc/omr/seoul/web/univ_info2026/%EC%97%B0%EC%84%B8%EB%8C%80%ED%95%99%EA%B5%90/%EC%97%B0%EC%84%B8%EB%8C%80%ED%95%99%EA%B5%90_2028%ED%95%99%EB%85%84%EB%8F%84_%EB%8C%80%ED%95%99%EC%9E%85%ED%95%99%EC%A0%84%ED%98%95%EA%B3%84%ED%9A%8D.pdf"
+  },
+  {
+   "code": "YSM",
+   "name": "연세대학교(미래)",
+   "short": "연세대(미래)",
+   "quota": "171",
+   "ratio": "논술 80; 학생부교과 10; 출결 10",
+   "recordPct": 20,
+   "csat": [
+    {
+     "who": "전 모집단위",
+     "rule": "적용하지 않음(수능 자격기준 없음)"
+    }
+   ],
+   "noCsat": false,
+   "exam": {
+    "minutes": "",
+    "items": "",
+    "type": "논술우수자(전 모집단위)"
+   },
+   "dates2027": [],
+   "rate2026": "",
+   "src": "https://cdn013.negagea.net/dgsmidc/omr/seoul/web/univ_info2026/%EC%97%B0%EC%84%B8%EB%8C%80%ED%95%99%EA%B5%90%28%EB%AF%B8%EB%9E%98%29/%EC%97%B0%EC%84%B8%EB%8C%80%ED%95%99%EA%B5%90%28%EB%AF%B8%EB%9E%98%29_2028%ED%95%99%EB%85%84%EB%8F%84_%EB%8C%80%ED%95%99%EC%9E%85%ED%95%99%EC%A0%84%ED%98%95%EA%B3%84%ED%9A%8D.pdf"
+  },
+  {
+   "code": "EUL",
+   "name": "을지대학교",
+   "short": "을지대",
+   "quota": "251",
+   "ratio": "논술고사 80; 학생부교과 20",
+   "recordPct": 20,
+   "csat": [
+    {
+     "who": "논술우수자·사회기여 및 배려대상자 전 모집단위",
+     "rule": "수능최저학력기준 없음"
+    }
+   ],
+   "noCsat": false,
+   "exam": {
+    "minutes": "70",
+    "items": "국어 7문항+수학 7문항(각 문항당 10점)",
+    "type": "논술우수자·사회기여 및 배려대상자 공통"
+   },
+   "dates2027": [
+    "2026-10-16",
+    "2026-10-17"
+   ],
+   "rate2026": "9.14",
+   "src": "https://cdn013.negagea.net/dgsmidc/omr/seoul/web/univ_info2026/%EC%9D%84%EC%A7%80%EB%8C%80%ED%95%99%EA%B5%90/%EC%9D%84%EC%A7%80%EB%8C%80%ED%95%99%EA%B5%90_2028%ED%95%99%EB%85%84%EB%8F%84_%EB%8C%80%ED%95%99%EC%9E%85%ED%95%99%EC%A0%84%ED%98%95%EA%B3%84%ED%9A%8D.pdf"
+  },
+  {
+   "code": "EWHA",
+   "name": "이화여자대학교",
+   "short": "이화여대",
+   "quota": "296",
+   "ratio": "논술 100",
+   "recordPct": 0,
+   "csat": [
+    {
+     "who": "전 계열(아래 단서 제외)",
+     "rule": "국어, 수학, 영어, 탐구(사회/과학) 4개 영역 중 3개 영역 등급 합 7 이내"
+    },
+    {
+     "who": "의예과",
+     "rule": "국어, 수학, 영어, 탐구(사회/과학) 4개 영역 중 4개 영역 등급 합 5 이내"
+    },
+    {
+     "who": "약학전공",
+     "rule": "국어, 수학, 영어, 탐구(사회/과학) 4개 영역 중 4개 영역 등급 합 6 이내"
+    },
+    {
+     "who": "스크랜튼학부",
+     "rule": "국어, 수학, 영어, 탐구(사회/과학) 4개 영역 중 3개 영역 등급 합 5 이내"
+    }
+   ],
+   "noCsat": true,
+   "exam": {
+    "minutes": "100",
+    "items": "",
+    "type": "자연Ⅰ(수리논술Ⅰ)"
+   },
+   "dates2027": [
+    "2026-11-28",
+    "2026-11-29"
+   ],
+   "rate2026": "",
+   "src": "https://cdn013.negagea.net/dgsmidc/omr/seoul/web/univ_info2026/%EC%9D%B4%ED%99%94%EC%97%AC%EC%9E%90%EB%8C%80%ED%95%99%EA%B5%90/%EC%9D%B4%ED%99%94%EC%97%AC%EC%9E%90%EB%8C%80%ED%95%99%EA%B5%90_2028%ED%95%99%EB%85%84%EB%8F%84_%EB%8C%80%ED%95%99%EC%9E%85%ED%95%99%EC%A0%84%ED%98%95%EA%B3%84%ED%9A%8D.pdf"
+  },
+  {
+   "code": "INHA",
+   "name": "인하대학교",
+   "short": "인하대",
+   "quota": "449",
+   "ratio": "논술 90; 학생부교과 10",
+   "recordPct": 10,
+   "csat": [
+    {
+     "who": "인문, 자연(의예과 외)",
+     "rule": "국어, 수학, 영어, 탐구 중 2개 영역 합 6등급 이내"
+    },
+    {
+     "who": "의예과",
+     "rule": "국어, 수학, 영어, 탐구 중 3개 영역 합 3등급 이내"
+    }
+   ],
+   "noCsat": false,
+   "exam": {
+    "minutes": "100",
+    "items": "",
+    "type": "자연계열(수리논술)"
+   },
+   "dates2027": [
+    "2026-12-05",
+    "2026-12-06"
+   ],
+   "rate2026": "19.49",
+   "src": "https://cdn013.negagea.net/dgsmidc/omr/seoul/web/univ_info2026/%EC%9D%B8%ED%95%98%EB%8C%80%ED%95%99%EA%B5%90/%EC%9D%B8%ED%95%98%EB%8C%80%ED%95%99%EA%B5%90_2028%ED%95%99%EB%85%84%EB%8F%84_%EB%8C%80%ED%95%99%EC%9E%85%ED%95%99%EC%A0%84%ED%98%95%EA%B3%84%ED%9A%8D.pdf"
+  },
+  {
+   "code": "CAU",
+   "name": "중앙대학교",
+   "short": "중앙대",
+   "quota": "482",
+   "ratio": "논술 80; 학생부교과 10; 학생부출결 10",
+   "recordPct": 20,
+   "csat": [
+    {
+     "who": "모두의 논술 서울캠퍼스(의학부·약학부 제외)",
+     "rule": "국어, 수학, 영어, 사탐·과탐 중 3개 영역 등급 합 6 이내"
+    },
+    {
+     "who": "모두의 논술 서울캠퍼스 약학부",
+     "rule": "국어, 수학, 영어, 사탐·과탐 중 4개 영역 등급 합 5 이내"
+    },
+    {
+     "who": "모두의 논술 서울캠퍼스 의학부",
+     "rule": "국어, 수학, 영어, 탐구(사/과탐 평균) 중 4개 영역 등급 합 5 이내"
+    },
+    {
+     "who": "모두의 논술 다빈치캠퍼스 전체",
+     "rule": "수능최저학력기준 적용하지 않음"
+    },
+    {
+     "who": "재학생 논술 전체",
+     "rule": "수능최저학력기준 없음"
+    }
+   ],
+   "noCsat": true,
+   "exam": {
+    "minutes": "120",
+    "items": "언어논술 2문항 + 수리논술 1문항",
+    "type": "일반형 경영경제(산업보안학과(자연) 제외)"
+   },
+   "dates2027": [
+    "2026-10-11",
+    "2026-11-28",
+    "2026-11-29"
+   ],
+   "rate2026": "88.40",
+   "src": "https://cdn013.negagea.net/dgsmidc/omr/seoul/web/univ_info2026/%EC%A4%91%EC%95%99%EB%8C%80%ED%95%99%EA%B5%90/%EC%A4%91%EC%95%99%EB%8C%80%ED%95%99%EA%B5%90_2028%ED%95%99%EB%85%84%EB%8F%84_%EB%8C%80%ED%95%99%EC%9E%85%ED%95%99%EC%A0%84%ED%98%95%EA%B3%84%ED%9A%8D.pdf"
+  },
+  {
+   "code": "TUK",
+   "name": "한국공학대학교",
+   "short": "한국공학대",
+   "quota": "200",
+   "ratio": "논술 80; 학생부교과 20",
+   "recordPct": 20,
+   "csat": [
+    {
+     "who": "전 모집단위",
+     "rule": "없음"
+    }
+   ],
+   "noCsat": true,
+   "exam": {
+    "minutes": "80",
+    "items": "9문항(문항1~7 각 10점, 문항8~9 각 15점; 합산 ×1.5=150점 + 기본점수 250점 = 만점 400점)",
+    "type": "수리논술(전 모집단위)"
+   },
+   "dates2027": [
+    "2026-11-22"
+   ],
+   "rate2026": "12.48",
+   "src": "https://cdn013.negagea.net/dgsmidc/omr/seoul/web/univ_info2026/%ED%95%9C%EA%B5%AD%EA%B3%B5%ED%95%99%EB%8C%80%ED%95%99%EA%B5%90/%ED%95%9C%EA%B5%AD%EA%B3%B5%ED%95%99%EB%8C%80%ED%95%99%EA%B5%90_2028%ED%95%99%EB%85%84%EB%8F%84_%EB%8C%80%ED%95%99%EC%9E%85%ED%95%99%EC%A0%84%ED%98%95%EA%B3%84%ED%9A%8D.pdf"
+  },
+  {
+   "code": "KUT",
+   "name": "한국기술교육대학교",
+   "short": "한국기술교육대",
+   "quota": "150",
+   "ratio": "논술 100",
+   "recordPct": 0,
+   "csat": [
+    {
+     "who": "전 모집단위",
+     "rule": "없음(수능최저학력기준 미적용)"
+    }
+   ],
+   "noCsat": false,
+   "exam": {
+    "minutes": "80",
+    "items": "10개 내외(단문형 지문, 단답/약술형 서술)",
+    "type": "공학·ICT융합계열 수리논술"
+   },
+   "dates2027": [
+    "2026-11-25"
+   ],
+   "rate2026": "19.50",
+   "src": "https://cdn013.negagea.net/dgsmidc/omr/seoul/web/univ_info2026/%ED%95%9C%EA%B5%AD%EA%B8%B0%EC%88%A0%EA%B5%90%EC%9C%A1%EB%8C%80%ED%95%99%EA%B5%90/%ED%95%9C%EA%B5%AD%EA%B8%B0%EC%88%A0%EA%B5%90%EC%9C%A1%EB%8C%80%ED%95%99%EA%B5%90_2028%ED%95%99%EB%85%84%EB%8F%84_%EB%8C%80%ED%95%99%EC%9E%85%ED%95%99%EC%A0%84%ED%98%95%EA%B3%84%ED%9A%8D.pdf"
+  },
+  {
+   "code": "HUFS",
+   "name": "한국외국어대학교",
+   "short": "한국외대",
+   "quota": "449",
+   "ratio": "논술 100",
+   "recordPct": 0,
+   "csat": [
+    {
+     "who": "서울캠퍼스 모집단위",
+     "rule": "국어, 수학, 영어, 탐구(통합사회 혹은 통합과학 1과목) 중 2개 영역 등급 합 5 이내"
+    },
+    {
+     "who": "글로벌캠퍼스 모집단위",
+     "rule": "국어, 수학, 영어, 탐구(통합사회 혹은 통합과학 1과목) 중 2개 영역 등급 합 6 이내"
+    }
+   ],
+   "noCsat": true,
+   "exam": {
+    "minutes": "90",
+    "items": "",
+    "type": "자연계"
+   },
+   "dates2027": [
+    "2026-11-28",
+    "2026-11-29"
+   ],
+   "rate2026": "",
+   "src": "https://cdn013.negagea.net/dgsmidc/omr/seoul/web/univ_info2026/%ED%95%9C%EA%B5%AD%EC%99%B8%EA%B5%AD%EC%96%B4%EB%8C%80%ED%95%99%EA%B5%90/%ED%95%9C%EA%B5%AD%EC%99%B8%EA%B5%AD%EC%96%B4%EB%8C%80%ED%95%99%EA%B5%90_2028%ED%95%99%EB%85%84%EB%8F%84_%EB%8C%80%ED%95%99%EC%9E%85%ED%95%99%EC%A0%84%ED%98%95%EA%B3%84%ED%9A%8D.pdf"
+  },
+  {
+   "code": "KAU",
+   "name": "한국항공대학교",
+   "short": "한국항공대",
+   "quota": "198",
+   "ratio": "논술 100",
+   "recordPct": 0,
+   "csat": [
+    {
+     "who": "전체 모집단위",
+     "rule": "국, 수, 영, 통사/통과/직업 중 2개 영역 합 6등급 이내"
+    }
+   ],
+   "noCsat": true,
+   "exam": {
+    "minutes": "90",
+    "items": "2문항",
+    "type": "공학수리논술(공과대학, AI융합대학, 자유전공학부(공학적성))"
+   },
+   "dates2027": [
+    "2026-11-21"
+   ],
+   "rate2026": "19.72",
+   "src": "https://cdn013.negagea.net/dgsmidc/omr/seoul/web/univ_info2026/%ED%95%9C%EA%B5%AD%ED%95%AD%EA%B3%B5%EB%8C%80%ED%95%99%EA%B5%90/%ED%95%9C%EA%B5%AD%ED%95%AD%EA%B3%B5%EB%8C%80%ED%95%99%EA%B5%90_2028%ED%95%99%EB%85%84%EB%8F%84_%EB%8C%80%ED%95%99%EC%9E%85%ED%95%99%EC%A0%84%ED%98%95%EA%B3%84%ED%9A%8D.pdf"
+  },
+  {
+   "code": "HSU",
+   "name": "한성대학교",
+   "short": "한성대",
+   "quota": "99",
+   "ratio": "논술 80; 학생부교과 20",
+   "recordPct": 20,
+   "csat": [
+    {
+     "who": "전 모집단위",
+     "rule": "없음"
+    }
+   ],
+   "noCsat": true,
+   "exam": {
+    "minutes": "",
+    "items": "",
+    "type": ""
+   },
+   "dates2027": [],
+   "rate2026": "",
+   "src": "https://cdn013.negagea.net/dgsmidc/omr/seoul/web/univ_info2026/%ED%95%9C%EC%84%B1%EB%8C%80%ED%95%99%EA%B5%90/%ED%95%9C%EC%84%B1%EB%8C%80%ED%95%99%EA%B5%90_2028%ED%95%99%EB%85%84%EB%8F%84_%EB%8C%80%ED%95%99%EC%9E%85%ED%95%99%EC%A0%84%ED%98%95%EA%B3%84%ED%9A%8D.pdf"
+  },
+  {
+   "code": "HSN",
+   "name": "한신대학교",
+   "short": "한신대",
+   "quota": "253",
+   "ratio": "논술 100",
+   "recordPct": 0,
+   "csat": [
+    {
+     "who": "전 모집단위",
+     "rule": "없음"
+    }
+   ],
+   "noCsat": true,
+   "exam": {
+    "minutes": "80",
+    "items": "국어 5문항, 수학 10문항(각 문항 8점)",
+    "type": "자연계열"
+   },
+   "dates2027": [
+    "2026-12-05"
+   ],
+   "rate2026": "5.44",
+   "src": "https://cdn013.negagea.net/dgsmidc/omr/seoul/web/univ_info2026/%ED%95%9C%EC%8B%A0%EB%8C%80%ED%95%99%EA%B5%90/%ED%95%9C%EC%8B%A0%EB%8C%80%ED%95%99%EA%B5%90_2028%ED%95%99%EB%85%84%EB%8F%84_%EB%8C%80%ED%95%99%EC%9E%85%ED%95%99%EC%A0%84%ED%98%95%EA%B3%84%ED%9A%8D.pdf"
+  },
+  {
+   "code": "HYU",
+   "name": "한양대학교",
+   "short": "한양대",
+   "quota": "289",
+   "ratio": "논술 90; 학생부(출결) 10",
+   "recordPct": 10,
+   "csat": [
+    {
+     "who": "전 모집단위(의예과 제외)",
+     "rule": "국어, 수학, 영어, 탐구(상위 1개 과목) 중 3개 영역 등급합 7 이내"
+    },
+    {
+     "who": "의예과",
+     "rule": "국어, 수학, 영어, 탐구(2개 과목 평균) 중 3개 영역 등급합 4 이내"
+    }
+   ],
+   "noCsat": false,
+   "exam": {
+    "minutes": "90",
+    "items": "수리논술 2문항(소문항 각 2~3문항)",
+    "type": "자연"
+   },
+   "dates2027": [
+    "2026-11-28",
+    "2026-11-29"
+   ],
+   "rate2026": "111.75",
+   "src": "https://cdn013.negagea.net/dgsmidc/omr/seoul/web/univ_info2026/%ED%95%9C%EC%96%91%EB%8C%80%ED%95%99%EA%B5%90/%ED%95%9C%EC%96%91%EB%8C%80%ED%95%99%EA%B5%90_2028%ED%95%99%EB%85%84%EB%8F%84_%EB%8C%80%ED%95%99%EC%9E%85%ED%95%99%EC%A0%84%ED%98%95%EA%B3%84%ED%9A%8D.pdf"
+  },
+  {
+   "code": "ERICA",
+   "name": "한양대학교(ERICA)",
+   "short": "한양대(ERICA)",
+   "quota": "203",
+   "ratio": "논술 100",
+   "recordPct": 0,
+   "csat": [
+    {
+     "who": "전 모집단위",
+     "rule": "국어, 수학, 영어, 사회/과학탐구 영역 중 2개 등급 합 6 이내"
+    }
+   ],
+   "noCsat": false,
+   "exam": {
+    "minutes": "",
+    "items": "",
+    "type": ""
+   },
+   "dates2027": [],
+   "rate2026": "",
+   "src": "https://cdn013.negagea.net/dgsmidc/omr/seoul/web/univ_info2026/%ED%95%9C%EC%96%91%EB%8C%80%ED%95%99%EA%B5%90%28ERICA%29/%ED%95%9C%EC%96%91%EB%8C%80%ED%95%99%EA%B5%90%28ERICA%29_2028%ED%95%99%EB%85%84%EB%8F%84_%EB%8C%80%ED%95%99%EC%9E%85%ED%95%99%EC%A0%84%ED%98%95%EA%B3%84%ED%9A%8D.pdf"
+  },
+  {
+   "code": "HONGIK",
+   "name": "홍익대학교",
+   "short": "홍익대",
+   "quota": "579",
+   "ratio": "논술 90; 학생부 교과 10",
+   "recordPct": 10,
+   "csat": [
+    {
+     "who": "서울캠퍼스 인문계열/자연계열/예술학과/자율전공(인문·예능)/자율전공(자연·예능)",
+     "rule": "국어, 수학, 영어, 탐구(사회/과학) 영역 중 2개 영역 등급 합 5 이내, 한국사 4등급 이내"
+    },
+    {
+     "who": "세종캠퍼스 인문계열/자연계열/자율전공(인문·예능)/자율전공(자연·예능)",
+     "rule": "국어, 수학, 영어, 탐구(사회/과학) 영역 중 1개 영역 등급 4 이내, 한국사 응시 필수"
+    }
+   ],
+   "noCsat": false,
+   "exam": {
+    "minutes": "120",
+    "items": "논리적·창의적 문제해결능력 측정을 위한 2~4개 제시문 또는 질문(수리형)",
+    "type": "자연계열/자율전공(자연·예능)"
+   },
+   "dates2027": [
+    "2026-10-03",
+    "2026-10-04",
+    "2026-11-22"
+   ],
+   "rate2026": "20.40",
+   "src": "https://cdn013.negagea.net/dgsmidc/omr/seoul/web/univ_info2026/%ED%99%8D%EC%9D%B5%EB%8C%80%ED%95%99%EA%B5%90%28%EC%84%9C%EC%9A%B8%29/%ED%99%8D%EC%9D%B5%EB%8C%80%ED%95%99%EA%B5%90%28%EC%84%9C%EC%9A%B8%29_2028%ED%95%99%EB%85%84%EB%8F%84_%EB%8C%80%ED%95%99%EC%9E%85%ED%95%99%EC%A0%84%ED%98%95%EA%B3%84%ED%9A%8D.pdf"
+  }
+ ]
+}

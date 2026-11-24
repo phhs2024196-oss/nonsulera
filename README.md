@@ -40,3 +40,9 @@ Buffer는 공개 URL의 미디어만 받는다. 카드뉴스 이미지·영상�
 2. Vercel 운영 배포: create_deployment(project `prj_dEpPd1xw5T2DWTFoHQyJmnGkM8Mf`, team `team_Bg0llToWzvrZxR5uDDwTkqhm`, target `production`, gitSource github phhs2024196-oss/nonsulera, ref `claude/project-thread-rc0tw4`)
 3. URL이 200으로 열리는지 확인한 뒤 Buffer에 그 URL로 등록
 - 파일명 영문·숫자·하이픈, 파일당 95MB 미만. 검색엔진 노출은 robots로 막음(저장소가 공개라 파일 자체는 공개).
+
+## 개발 규칙
+- **관리자 동시 추가(대표 상시 규칙, 2026-11-24)**: 본 사이트에 기능을 추가하면, 그 기능의 관리 화면(통계·목록·설정)을 `/admin`에도 같은 커밋에서 추가한다. 필요한 집계는 `admin_stats()`(supabase/migrations)에 키를 더해 받는다.
+- 새 행동 기록 종류는 `log_event()`의 허용 목록과 `lib/track.ts`의 `EventType`에 함께 추가한다.
+- DB 변경은 `supabase/migrations/000N_*.sql` 파일로 남긴다(적용은 Supabase MCP 또는 SQL Editor).
+- 관리자 페이지(`/admin`)는 `profiles.is_admin = true` 계정만 열린다(함수가 거부하면 404).
