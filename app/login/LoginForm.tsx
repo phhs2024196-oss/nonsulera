@@ -27,8 +27,9 @@ export default function LoginForm({ next }: { next: string }) {
 
   async function oauth(p: Provider) {
     if (!agree) return setMsg("아래 동의에 체크해 주세요.");
-    const { error } = await sb!.auth.signInWithOAuth({ provider: p, options: { redirectTo } });
-    if (error) setMsg("지금은 이 방법으로 로그인할 수 없어요. 잠시 뒤 다시 시도해 주세요.");
+    const { data, error } = await sb!.auth.signInWithOAuth({ provider: p, options: { redirectTo, skipBrowserRedirect: p === "kakao" } });
+    if (error) return setMsg("지금은 이 방법으로 로그인할 수 없어요. 잠시 뒤 다시 시도해 주세요.");
+    if (p === "kakao" && data?.url) window.location.assign(`/api/kakao?u=${encodeURIComponent(data.url)}`);
   }
   async function magic(e: React.FormEvent) {
     e.preventDefault();
