@@ -24,7 +24,7 @@ const nameOf = (k: string) => {
 };
 const fixed: Record<string, string> = {
   "/": "첫 화면", "/books": "교재 소개", "/materials": "무료 자료 목록", "/qna": "질문과 답 목록", "/test": "논술 유형 검사",
-  "/grading": "답안 첨삭 안내", "/notes": "기출 오답 노트", "/qna/ask": "질문하기", "/login": "로그인", "/me": "내 정보", "/privacy": "개인정보 처리방침", "/admin": "관리자", "/diagnosis": "내 대학 진단",
+  "/grading": "답안 첨삭 안내", "/notes": "기출 오답 노트", "/notes/print": "오답 요약(인쇄)", "/qna/ask": "질문하기", "/login": "로그인", "/me": "내 정보", "/privacy": "개인정보 처리방침", "/admin": "관리자", "/diagnosis": "내 대학 진단",
 };
 const pageName = (path: string) => {
   const p = (path || "/").split("?")[0].replace(/\/$/, "") || "/";
@@ -93,6 +93,8 @@ export default async function Admin() {
   const { data: st, error } = await sb.rpc("admin_stats");
   if (error || !st) notFound(); // 관리자 아니면 DB 함수가 거부
   const { data: m2 } = await sb.rpc("admin_members_stats");
+  const { data: m3 } = await sb.rpc("admin_notes_stats");
+  const ns = (m3 ?? { causes: [] }) as R;
   const ms = (m2 ?? { questions: [], notices: [], wrong_top: [], notes_schools: [], notes_by_status: {} }) as R;
   const openQ = (ms.questions as R[]).filter((q) => q.status === "open").length;
   const itemName = (id: string, school: string) => {
@@ -160,6 +162,10 @@ export default async function Admin() {
           <p><Link className="btn" href="/admin/manage">답변하기 · 소식 올리기</Link></p>
           <Table head={["최근 질문", "상태"]} rows={(ms.questions as R[]).slice(0, 8).map((q) => [`${q.topic} · ${String(q.body).slice(0, 40)}`, q.status === "open" ? "대기" : q.status === "answered" ? "답변" : "닫힘"])} />
           <Table head={["올린 소식", "학교"]} rows={(ms.notices as R[]).slice(0, 5).map((x) => [x.title, schoolName(x.school)])} />
+        </Box>
+        <Box title="오답 노트: 복습·틀린 이유">
+          <Table head={["항목", "값"]} rows={[["최근 7일 노트 쓴 회원", ns.active_7d ?? 0], ["복습 대기 문항", ns.review_pending ?? 0], ["오늘까지 복습할 문항", ns.review_due ?? 0], ["복습 졸업(3회 연속 맞힘)", ns.review_done ?? 0], ["타이머 기록 문항", ns.timed ?? 0]]} />
+          <Table head={["틀린 이유", "횟수"]} rows={(ns.causes as R[]).map((r) => [r.cause, r.n])} bar={1} />
         </Box>
         <Box title="오답 노트: 많이 틀린 문항">
           <Table head={["문항", "회원 수"]} rows={(ms.wrong_top as R[]).map((r) => [itemName(r.item_id, r.school), r.n])} bar={1} />

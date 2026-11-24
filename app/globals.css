@@ -292,3 +292,38 @@ b.hot, .hot { color: var(--seal); }
 .qa-a p { white-space: pre-wrap; margin: 4px 0 0; }
 .mq { display: grid; gap: 8px; padding: 14px 0; border-bottom: 1px solid var(--rule); }
 .mq.open { background: #fffafa; }
+
+/* 오답 노트 v2 */
+.note-kpis { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 10px; margin: 20px 0 6px; }
+.note-kpis div { border: 1px solid var(--rule); border-radius: 10px; padding: 12px 14px; display: grid; }
+.note-kpis b { font-size: 28px; font-weight: 900; line-height: 1.1; }
+.note-kpis span { font-size: 13px; color: var(--ink-faint); }
+@media (max-width: 560px) { .note-kpis { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+.lv { margin-left: 8px; font-size: 10px; color: var(--seal); letter-spacing: 1px; }
+.lv i { color: #d8d8d8; font-style: normal; }
+.ni-tags { display: flex; flex-wrap: wrap; gap: 4px; margin-top: 6px; }
+.ni-tags span { font-size: 12px; background: #f1f1f1; border-radius: 4px; padding: 2px 7px; color: #444; }
+.ni-tags.big span { font-size: 13.5px; padding: 4px 9px; }
+.ni-tags.big b { color: var(--seal); margin-left: 2px; }
+.ni-why { font-size: 13px; color: var(--seal); margin-top: 6px; font-weight: 700; }
+.cz { font-size: 12px; color: #fff; background: var(--seal); border-radius: 4px; padding: 1px 6px; margin-right: 4px; font-weight: 700; }
+.nitem.due { box-shadow: inset 4px 0 0 var(--seal); }
+.nb.running { background: #222; color: #fff; border-color: #222; font-variant-numeric: tabular-nums; }
+.ni-sim { grid-column: 1 / -1; display: grid; gap: 6px; padding: 10px 12px; background: #f7f7f7; border-radius: 8px; }
+.ni-sim a { text-decoration: none; color: var(--ink); font-size: 14px; }
+.ni-sim a:hover b { text-decoration: underline; }
+.ni-msg { grid-column: 1 / -1; margin: 0; }
+.note-sel { display: flex; gap: 8px; width: 100%; }
+.note-sel select { font: inherit; font-size: 14px; padding: 6px 8px; border: 1px solid var(--rule); border-radius: 8px; background: #fff; }
+.hb-t i.over { position: absolute; left: 0; top: 0; }
+.hb-t i:not(.over) { position: relative; }
+.sg-bar { height: 4px; background: #eee; border-radius: 2px; overflow: hidden; margin-top: 4px; }
+.sg-bar i { display: block; height: 100%; background: var(--seal); }
+.plist li { margin-bottom: 12px; line-height: 1.55; }
+.pmemo { border-left: 2px solid var(--seal); padding-left: 8px; margin: 3px 0; }
+@media print {
+  header.top, footer, .noprint { display: none !important; }
+  .printable { max-width: none !important; padding: 0 !important; }
+  .psec { break-inside: avoid-page; }
+  .plist li { break-inside: avoid; }
+}
