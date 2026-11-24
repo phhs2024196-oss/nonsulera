@@ -33,3 +33,10 @@
 
 ## 배포 주의
 Vercel 무료(Hobby)는 비상업 용도 한정이다. 무료 배포 단계는 괜찮지만 판매를 시작하면 Vercel Pro(월 20달러)로 올리거나 상업 이용이 가능한 Cloudflare로 옮긴다.
+
+## SNS 미디어 (Buffer 게시용)
+Buffer는 공개 URL의 미디어만 받는다. 카드뉴스 이미지·영상은 이 사이트의 `/sns/<날짜>/`에 올려 쓴다.
+1. `scripts/sns-add.sh 2026-11-25 card1.png card2.png reel.mp4` → 작업 브랜치에 커밋·푸시, 공개 URL 출력
+2. Vercel 운영 배포: create_deployment(project `prj_dEpPd1xw5T2DWTFoHQyJmnGkM8Mf`, team `team_Bg0llToWzvrZxR5uDDwTkqhm`, target `production`, gitSource github phhs2024196-oss/nonsulera, ref `claude/project-thread-rc0tw4`)
+3. URL이 200으로 열리는지 확인한 뒤 Buffer에 그 URL로 등록
+- 파일명 영문·숫자·하이픈, 파일당 95MB 미만. 검색엔진 노출은 robots로 막음(저장소가 공개라 파일 자체는 공개).
