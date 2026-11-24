@@ -1,6 +1,8 @@
 import data from "./data/past-items.json";
+import { bookData } from "./data/books";
+import { books } from "./site";
 
-export type Item = { id: string; y: number; tr: string; et: string; u: string; f: string; p: number | null; t: number | null; lv: string; tg: string[]; sim: string[] };
+export type Item = { id: string; no?: string; y: number; tr: string; et: string; u: string; f: string; p: number | null; t: number | null; lv: string; tg: string[]; sim: string[] };
 export type NoteStatus = "solved" | "wrong" | "retry";
 export type Note = { item_id: string; school: string; status: NoteStatus; memo: string | null; causes: string[] | null; time_sec: number | null; review_at: string | null; review_step: number; updated_at?: string };
 export const noteLabel: Record<NoteStatus, string> = { solved: "풀었음", wrong: "틀림", retry: "다시 풀기" };
@@ -17,12 +19,21 @@ export const causeTip: Record<string, string> = {
 export const pastNames = data.names as Record<string, string>;
 export const pastItems = data.items as unknown as Record<string, Item[]>;
 export const pastSchools = Object.keys(pastItems).sort((a, b) => pastNames[a].localeCompare(pastNames[b], "ko"));
+/** 우리 교재 오답 노트: 교재마다 코드 "B-<교재키>" (scripts/build-book-notes.py가 데이터 생성) */
+export const bookSources = bookData.map((b) => ({ code: `B-${b.key}`, key: b.key, title: b.title, kind: b.kind, built: b.built, items: b.items as Item[] }));
+export const plannedBooks = books.filter((b) => !bookSources.some((x) => x.key === b.key));
+/** 기출 학교 + 교재: 코드 → 문항 목록 */
+export const sourceItems: Record<string, Item[]> = { ...pastItems, ...Object.fromEntries(bookSources.map((b) => [b.code, b.items])) };
+export const isBook = (code: string) => code.startsWith("B-");
 export const itemIndex: Record<string, Item & { s: string }> = Object.fromEntries(
-  Object.entries(pastItems).flatMap(([s, list]) => list.map((it) => [it.id, { ...it, s }])),
+  Object.entries(sourceItems).flatMap(([s, list]) => list.map((it) => [it.id, { ...it, s }])),
 );
-export const shortName = (code: string) =>
-  (pastNames[code] ?? code).replace("고려대학교 세종캠퍼스", "고려대(세종)").replace("연세대학교 미래캠퍼스", "연세대(미래)")
+export const shortName = (code: string) => {
+  const b = bookSources.find((x) => x.code === code);
+  if (b) return `${b.title}(${b.kind})`;
+  return (pastNames[code] ?? code).replace("고려대학교 세종캠퍼스", "고려대(세종)").replace("연세대학교 미래캠퍼스", "연세대(미래)")
     .replace("한국외국어대학교", "한국외대").replace("서울과학기술대학교", "서울과기대").replace("여자대학교", "여대").replace("대학교", "대");
+};
 /** 기출 DB의 풀이 형태 코드를 학생이 읽는 말로 */
 export const formName: Record<string, string> = {
   추론: "추론", 분류: "경우 나누기", 최적2단: "최대·최소", 구성: "구성하기", 전수: "모두 세기", 일반화: "일반화",
@@ -32,7 +43,9 @@ export const formName: Record<string, string> = {
 export const levelDots = (lv: string) => Math.max(1, Math.min(4, Number(lv.replace("L", "")) - 2 || 2));
 export const itemTitle = (id: string) => {
   const it = itemIndex[id];
-  return it ? `${shortName(it.s)} ${it.y} ${it.et.replace("수시 ", "")} ${it.id.split("-").pop()}번` : id;
+  if (!it) return id;
+  if (isBook(it.s)) return `${it.et} ${it.no || it.id.split("-").pop()}번`;
+  return `${shortName(it.s)} ${it.y} ${it.et.replace("수시 ", "")} ${it.id.split("-").pop()}번`;
 };
 export const kstToday = () => new Date(Date.now() + 9 * 3600e3).toISOString().slice(0, 10);
 
@@ -80,7 +93,7 @@ export function recommend(notes: Note[], k = 6) {
 export function schoolCoverage(school: string, notes: Note[]) {
   const mine = new Set(notes.filter((n) => n.school === school).map((n) => n.item_id));
   const m = new Map<string, { n: number; done: number }>();
-  for (const it of pastItems[school] ?? []) {
+  for (const it of sourceItems[school] ?? []) {
     const u = it.u.split(" > ")[1] ?? (it.u || "기타");
     const v = m.get(u) ?? { n: 0, done: 0 };
     v.n += 1; if (mine.has(it.id)) v.done += 1;

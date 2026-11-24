@@ -1,20 +1,55 @@
 "use client";
 import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
+import "katex/dist/katex.min.css";
 import { causes, causeTip, formName, itemIndex, itemTitle, kstToday, levelDots, noteLabel, shortName, type Item, type Note, type NoteStatus } from "@/lib/notes";
 
 type Props = { item: Item & { s?: string }; school: string; note?: Note; loggedIn: boolean; onSaved: (n: Note | null) => void; showSchool?: boolean; reason?: string };
+
+type C = { review: string; caution: string; need: string; takeaway: string; concepts: string[]; conditions: string[]; stuck: string; standards: string[]; textbooks: string[] };
+const H = ({ html }: { html: string }) => <span dangerouslySetInnerHTML={{ __html: html }} />;
+
+function Comment({ id }: { id: string }) {
+  const [c, setC] = useState<C | null | "none" | "login">(null);
+  useEffect(() => {
+    fetch(`/api/note/comment?id=${encodeURIComponent(id)}`).then(async (r) => setC(r.status === 401 ? "login" : r.ok ? await r.json() : "none")).catch(() => setC("none"));
+  }, [id]);
+  if (c === null) return <div className="ni-cm faint">코멘트를 불러오는 중이에요.</div>;
+  if (c === "login") return <div className="ni-cm faint">코멘트는 로그인하면 볼 수 있어요.</div>;
+  if (c === "none") return <div className="ni-cm faint">이 문항은 코멘트를 준비 중이에요.</div>;
+  return (
+    <div className="ni-cm">
+      <div className="cm-sec">
+        <b>틀렸다면 다시 볼 것</b>
+        {c.review && <p><H html={c.review} /></p>}
+        {c.concepts.length > 0 && <ul>{c.concepts.map((x, i) => <li key={i}><H html={x} /></li>)}</ul>}
+        {c.standards.length > 0 && <p className="faint">교육과정: {c.standards.join(" / ")}</p>}
+        {c.textbooks.length > 0 && <p className="faint">교과서: {c.textbooks.join(" / ")}</p>}
+      </div>
+      <div className="cm-sec">
+        <b>주의할 점</b>
+        {c.caution && <p><H html={c.caution} /></p>}
+        {c.conditions.length > 0 && <ul>{c.conditions.map((x, i) => <li key={i}><H html={x} /></li>)}</ul>}
+      </div>
+      {c.stuck && <div className="cm-sec"><b>많이 막히는 곳</b><p><H html={c.stuck} /></p></div>}
+      {c.takeaway && <div className="cm-sec"><b>이 문항에서 가져갈 것</b><p><H html={c.takeaway} /></p></div>}
+    </div>
+  );
+}
 
 const mmss = (s: number) => `${Math.floor(s / 60)}:${String(s % 60).padStart(2, "0")}`;
 
 export async function saveNote(body: Record<string, unknown>) {
   const r = await fetch("/api/note", { method: "POST", headers: { "content-type": "application/json" }, body: JSON.stringify(body) });
   if (!r.ok) throw new Error(r.status === 401 ? "login" : "save");
-  return (await r.json()).note as Partial<Note> | null;
+  const j = await r.json();
+  if (j.report && typeof window !== "undefined") window.dispatchEvent(new CustomEvent("ne-report", { detail: j.report }));
+  return j.note as Partial<Note> | null;
 }
 
 export default function ItemCard({ item: it, school, note: n, loggedIn, onSaved, showSchool, reason }: Props) {
   const [open, setOpen] = useState<"" | "memo" | "sim">("");
+  const [cm, setCm] = useState(false);
   const [msg, setMsg] = useState("");
   const [run, setRun] = useState<number | null>(null);
   const [sec, setSec] = useState(0);
@@ -39,7 +74,7 @@ export default function ItemCard({ item: it, school, note: n, loggedIn, onSaved,
   function mark(s: NoteStatus) {
     const next = n?.status === s ? "" : s;
     send({ event: "mark", status: next }, next ? { ...(n ?? { item_id: it.id, school, memo: null, causes: [], time_sec: null, review_step: 0 }), status: next, review_at: null } as Note : null);
-    if (next && next !== "solved") setOpen("memo");
+    if (next && next !== "solved") { setOpen("memo"); setCm(true); }
   }
 
   function timer() {
@@ -76,13 +111,14 @@ export default function ItemCard({ item: it, school, note: n, loggedIn, onSaved,
         {due ? (
           <>
             <button type="button" className="nb on st-solved" onClick={() => send({ event: "review_ok" })}>복습: 맞힘</button>
-            <button type="button" className="nb on st-wrong" onClick={() => { send({ event: "review_fail" }); setOpen("memo"); }}>또 틀림</button>
+            <button type="button" className="nb on st-wrong" onClick={() => { send({ event: "review_fail" }); setOpen("memo"); setCm(true); }}>또 틀림</button>
           </>
         ) : (Object.keys(noteLabel) as NoteStatus[]).map((s) => (
           <button key={s} type="button" className={`nb ${n?.status === s ? `on st-${s}` : ""}`} aria-pressed={n?.status === s} onClick={() => mark(s)}>{noteLabel[s]}</button>
         ))}
         <button type="button" className={`nb ghost ${run !== null ? "running" : ""}`} onClick={timer}>{run !== null ? `■ ${mmss(sec)}${limit ? ` / ${it.t}분` : ""}` : "⏱ 시간 재기"}</button>
         <button type="button" className="nb ghost" onClick={() => setOpen(open === "memo" ? "" : "memo")}>메모</button>
+        {n && <button type="button" className={`nb ghost ${cm ? "running" : ""}`} onClick={() => setCm(!cm)}>코멘트</button>}
         {it.sim.length > 0 && <button type="button" className="nb ghost" onClick={() => setOpen(open === "sim" ? "" : "sim")}>비슷한 기출 {it.sim.length}</button>}
       </div>
       {open === "memo" && (
@@ -102,6 +138,7 @@ export default function ItemCard({ item: it, school, note: n, loggedIn, onSaved,
           <button className="btn" type="submit">저장</button>
         </form>
       )}
+      {cm && n && <Comment id={it.id} />}
       {open === "sim" && (
         <div className="ni-sim">
           <p className="faint">같은 핵심 아이디어나 소재를 쓰는 기출이에요. 다른 학교 문제로 같은 생각을 한 번 더 연습해요.</p>

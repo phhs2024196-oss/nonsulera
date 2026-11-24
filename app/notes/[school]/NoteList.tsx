@@ -1,7 +1,7 @@
 "use client";
 import { useMemo, useState } from "react";
 import ItemCard from "../ItemCard";
-import { formName, kstToday, type Item, type Note } from "@/lib/notes";
+import { formName, isBook, kstToday, type Item, type Note } from "@/lib/notes";
 
 export default function NoteList({ school, items, initial, loggedIn }: { school: string; items: Item[]; initial: Note[]; loggedIn: boolean }) {
   const [notes, setNotes] = useState<Record<string, Note>>(Object.fromEntries(initial.map((n) => [n.item_id, n])));
@@ -22,8 +22,9 @@ export default function NoteList({ school, items, initial, loggedIn }: { school:
       if (filter === "due") return n?.review_at && n.review_at <= today;
       return true;
     });
-    const m = new Map<number, Item[]>();
-    shown.forEach((it) => m.set(it.y, [...(m.get(it.y) ?? []), it]));
+    const m = new Map<string, Item[]>();
+    const key = (it: Item) => (isBook(school) ? it.tr || "문항" : `${it.y}학년도`);
+    shown.forEach((it) => m.set(key(it), [...(m.get(key(it)) ?? []), it]));
     return [...m.entries()];
   }, [items, notes, filter, unit, form, today]);
 
@@ -49,7 +50,7 @@ export default function NoteList({ school, items, initial, loggedIn }: { school:
       {years.length === 0 && <p className="muted">이 조건에 맞는 문항이 없어요.</p>}
       {years.map(([y, list]) => (
         <section key={y}>
-          <h2 className="rh">{y}학년도</h2>
+          <h2 className="rh">{y}</h2>
           <div className="nitems">
             {list.map((it) => <ItemCard key={it.id} item={it} school={school} note={notes[it.id]} loggedIn={loggedIn} onSaved={set(it.id)} />)}
           </div>

@@ -37,6 +37,7 @@ export default async function Me() {
     : [];
   const notes = (((await sb?.from("item_notes").select("school, status, item_id, memo, updated_at").order("updated_at", { ascending: false }))?.data ?? []) as { school: string; status: string; item_id: string; memo: string | null; updated_at: string }[]);
   const again = notes.filter((x) => x.status !== "solved");
+  const reps = (((await sb?.from("weak_reports").select("id, level, seen").order("level", { ascending: false }).limit(1))?.data ?? []) as { id: number; level: number; seen: boolean }[]);
   const qs = (((await sb?.from("questions").select("id, status").eq("user_id", user.id))?.data ?? []) as { id: number; status: string }[]);
 
   return (
@@ -105,6 +106,7 @@ export default async function Me() {
         {notes.length ? (
           <>
             <p className="muted">{notes.length}문항 표시 · 다시 볼 문항 <b>{again.length}</b>개 · <Link href="/notes">노트 열기</Link></p>
+            {reps[0] && <Link className="report-banner" href={`/notes/report/${reps[0].id}`}>{reps[0].seen ? "약점 리포트 다시 보기" : <b>새 약점 리포트가 나왔어요</b>} · 다시 볼 문항 {reps[0].level}개 기준</Link>}
             {again.length > 0 && (
               <ul>{again.slice(0, 5).map((x) => (
                 <li key={x.item_id}><Link href={`/notes/${x.school}`}>{shortName(x.school)} {x.item_id.split("-").slice(1).join("-")}</Link>{x.memo ? ` · ${x.memo}` : ""}</li>

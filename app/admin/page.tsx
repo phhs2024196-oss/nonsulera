@@ -6,7 +6,7 @@ import { types } from "@/lib/test";
 import { schoolName } from "@/lib/diag";
 import { qna } from "@/lib/qna";
 import Link from "next/link";
-import { shortName, pastItems } from "@/lib/notes";
+import { shortName, pastItems, bookSources, plannedBooks } from "@/lib/notes";
 
 export const metadata: Metadata = { title: "관리자", robots: { index: false } };
 export const dynamic = "force-dynamic";
@@ -24,7 +24,7 @@ const nameOf = (k: string) => {
 };
 const fixed: Record<string, string> = {
   "/": "첫 화면", "/books": "교재 소개", "/materials": "무료 자료 목록", "/qna": "질문과 답 목록", "/test": "논술 유형 검사",
-  "/grading": "답안 첨삭 안내", "/notes": "기출 오답 노트", "/notes/print": "오답 요약(인쇄)", "/qna/ask": "질문하기", "/login": "로그인", "/me": "내 정보", "/privacy": "개인정보 처리방침", "/admin": "관리자", "/diagnosis": "내 대학 진단",
+  "/grading": "답안 첨삭 안내", "/notes": "기출 오답 노트", "/notes/print": "오답 요약(인쇄)", "/notes/report": "약점 리포트", "/qna/ask": "질문하기", "/login": "로그인", "/me": "내 정보", "/privacy": "개인정보 처리방침", "/admin": "관리자", "/diagnosis": "내 대학 진단",
 };
 const pageName = (path: string) => {
   const p = (path || "/").split("?")[0].replace(/\/$/, "") || "/";
@@ -35,6 +35,7 @@ const pageName = (path: string) => {
   if (m) return `질문: ${qna.find((q) => q.slug === m![1])?.q ?? m[1]}`;
   m = p.match(/^\/test\/result\/([^/]+)$/);
   if (m) return `유형 검사 결과: ${m[1]} ${types[m[1]]?.name ?? ""}`.trim();
+  if (p.startsWith("/notes/report/")) return "약점 리포트";
   m = p.match(/^\/notes\/([^/]+)$/);
   if (m) return `오답 노트: ${shortName(m[1])}`;
   m = p.match(/^\/download\/([^/]+)$/);
@@ -95,6 +96,8 @@ export default async function Admin() {
   const { data: m2 } = await sb.rpc("admin_members_stats");
   const { data: m3 } = await sb.rpc("admin_notes_stats");
   const ns = (m3 ?? { causes: [] }) as R;
+  const { data: m4 } = await sb.rpc("admin_reports_stats");
+  const rs = (m4 ?? { top_units: [] }) as R;
   const ms = (m2 ?? { questions: [], notices: [], wrong_top: [], notes_schools: [], notes_by_status: {} }) as R;
   const openQ = (ms.questions as R[]).filter((q) => q.status === "open").length;
   const itemName = (id: string, school: string) => {
@@ -164,7 +167,8 @@ export default async function Admin() {
           <Table head={["올린 소식", "학교"]} rows={(ms.notices as R[]).slice(0, 5).map((x) => [x.title, schoolName(x.school)])} />
         </Box>
         <Box title="오답 노트: 복습·틀린 이유">
-          <Table head={["항목", "값"]} rows={[["최근 7일 노트 쓴 회원", ns.active_7d ?? 0], ["복습 대기 문항", ns.review_pending ?? 0], ["오늘까지 복습할 문항", ns.review_due ?? 0], ["복습 졸업(3회 연속 맞힘)", ns.review_done ?? 0], ["타이머 기록 문항", ns.timed ?? 0]]} />
+          <Table head={["항목", "값"]} rows={[["최근 7일 노트 쓴 회원", ns.active_7d ?? 0], ["복습 대기 문항", ns.review_pending ?? 0], ["오늘까지 복습할 문항", ns.review_due ?? 0], ["복습 졸업(3회 연속 맞힘)", ns.review_done ?? 0], ["타이머 기록 문항", ns.timed ?? 0], ["약점 리포트(받은 회원)", `${rs.reports ?? 0} (${rs.users ?? 0}명, 열어 본 것 ${rs.seen ?? 0})`], ["교재 노트", `${bookSources.length}권 열림 · ${plannedBooks.length}권 준비 중`]]} />
+          <Table head={["리포트 1위 약점 단원", "회원 수"]} rows={(rs.top_units as R[]).map((r) => [r.unit, r.n])} bar={1} />
           <Table head={["틀린 이유", "횟수"]} rows={(ns.causes as R[]).map((r) => [r.cause, r.n])} bar={1} />
         </Box>
         <Box title="오답 노트: 많이 틀린 문항">

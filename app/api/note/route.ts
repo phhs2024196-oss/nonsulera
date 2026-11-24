@@ -1,6 +1,7 @@
 import { NextResponse, type NextRequest } from "next/server";
 import { userClient, currentUser } from "@/lib/supabase/server";
-import { causes, itemIndex } from "@/lib/notes";
+import { causes, itemIndex, type Note } from "@/lib/notes";
+import { REPORT_STEP, badCount, buildReport } from "@/lib/report";
 
 const events = ["mark", "review_ok", "review_fail", "memo", "time"];
 
@@ -21,5 +22,20 @@ export async function POST(req: NextRequest) {
     p_item: item, p_school: it.s, p_status: status, p_memo: b.memo == null ? null : String(b.memo).slice(0, 1000),
     p_causes: cs, p_time: time, p_event: event,
   })) ?? {};
-  return error ? NextResponse.json({ error: "save" }, { status: 500 }) : NextResponse.json({ ok: true, note: data });
+  if (error) return NextResponse.json({ error: "save" }, { status: 500 });
+
+  // 다시 볼 문항이 10개, 20개…가 되면 약점 리포트를 한 번 만든다
+  let report: number | null = null;
+  if (["mark", "review_fail"].includes(event) && sb) {
+    const all = ((await sb.from("item_notes").select("item_id, school, status, memo, causes, time_sec, review_at, review_step, updated_at"))?.data ?? []) as Note[];
+    const level = Math.floor(badCount(all) / REPORT_STEP) * REPORT_STEP;
+    if (level >= REPORT_STEP) {
+      const { data: had } = await sb.from("weak_reports").select("id").eq("level", level).maybeSingle();
+      if (!had) {
+        const { data: id } = await sb.rpc("save_weak_report", { p_level: level, p_report: buildReport(all) });
+        report = (id as number | null) ?? null;
+      }
+    }
+  }
+  return NextResponse.json({ ok: true, note: data, report });
 }

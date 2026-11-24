@@ -46,3 +46,9 @@ Buffer는 공개 URL의 미디어만 받는다. 카드뉴스 이미지·영상�
 - 새 행동 기록 종류는 `log_event()`의 허용 목록과 `lib/track.ts`의 `EventType`에 함께 추가한다.
 - DB 변경은 `supabase/migrations/000N_*.sql` 파일로 남긴다(적용은 Supabase MCP 또는 SQL Editor).
 - 관리자 페이지(`/admin`)는 `profiles.is_admin = true` 계정만 열린다(함수가 거부하면 404).
+
+### 교재 오답 노트 자동 생성 (2026-11-24 대표 지시)
+- 우리 교재가 확정될 때마다 그 교재 문항 YAML(기출 DB와 같은 스키마 2.0)로 사이트 오답 노트를 만든다.
+  `python3 scripts/build-book-notes.py <교재키> <문항 YAML 폴더>` → `lib/data/books/<교재키>.json`, `index.ts` 갱신 → 커밋·배포.
+- 교재 문항 YAML에 `book_no`, `chapter`, `comment: {need, takeaway, caution, review}`를 넣으면 틀렸을 때 '다시 볼 것·주의할 점'으로 그대로 보인다.
+- 기출 코멘트는 `scripts/build-item-comments.py <기출 items 폴더>`로 다시 만든다(문제 본문·key_idea는 넣지 않음).

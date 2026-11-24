@@ -2,8 +2,10 @@ import Link from "next/link";
 import type { Metadata } from "next";
 import Hub from "./Hub";
 import Bars from "./Bars";
+import ReportToast from "./ReportToast";
 import { currentUser, userClient } from "@/lib/supabase/server";
-import { causeTip, pastItems, pastSchools, shortName, weakness, type Note } from "@/lib/notes";
+import { bookSources, causeTip, pastItems, pastSchools, plannedBooks, shortName, weakness, type Note } from "@/lib/notes";
+import { REPORT_STEP, badCount } from "@/lib/report";
 
 export const dynamic = "force-dynamic";
 export const metadata: Metadata = {
@@ -14,13 +16,18 @@ export const metadata: Metadata = {
 export default async function Notes() {
   const user = await currentUser();
   let mine: Note[] = [];
+  let reports: { id: number; level: number; seen: boolean }[] = [];
   if (user) {
     const sb = await userClient();
     mine = ((await sb?.from("item_notes").select("item_id, school, status, memo, causes, time_sec, review_at, review_step, updated_at"))?.data ?? []) as Note[];
+    reports = ((await sb?.from("weak_reports").select("id, level, seen").order("level", { ascending: false }))?.data ?? []) as typeof reports;
   }
+  const bad = badCount(mine);
+  const nextAt = (Math.floor(bad / REPORT_STEP) + 1) * REPORT_STEP;
   const by = (code: string, bad?: boolean) => mine.filter((m) => m.school === code && (!bad || m.status !== "solved")).length;
   const total = pastSchools.reduce((a, c) => a + pastItems[c].length, 0);
   const started = pastSchools.filter((c) => by(c) > 0);
+  void pastItems;
   const rest = pastSchools.filter((c) => by(c) === 0);
   const w = weakness(mine);
   const topCause = w.cause[0]?.[0];
@@ -42,7 +49,15 @@ export default async function Notes() {
             <div><b>{mine.filter((m) => m.review_step >= 3).length}</b><span>복습 졸업</span></div>
             <div><b>{started.length}</b><span>푼 학교</span></div>
           </div>
+          {reports[0] ? (
+            <Link className="report-banner" href={`/notes/report/${reports[0].id}`}>
+              {reports[0].seen ? "최근 약점 리포트" : <b>새 약점 리포트가 나왔어요</b>} · 다시 볼 문항 {reports[0].level}개 기준 · 다음 리포트는 {nextAt}개에서
+            </Link>
+          ) : (
+            <p className="faint">다시 볼 문항이 {REPORT_STEP}개가 되면 약점 리포트를 만들어 드려요. 지금 {bad}개예요.</p>
+          )}
           <Hub initial={mine} />
+          <ReportToast />
 
           {mine.length >= 3 && (
             <>
@@ -80,6 +95,23 @@ export default async function Notes() {
       ) : (
         <p className="faint"><Link href="/login?next=/notes">로그인</Link>하면 표시·틀린 이유·복습 일정·타이머 기록이 저장되고, 약점 분석과 비슷한 기출 추천이 열려요. 목록은 누구나 볼 수 있어요.</p>
       )}
+
+      <h2 className="rh">우리 교재 오답 노트</h2>
+      <div className="school-grid">
+        {bookSources.map((b) => (
+          <Link key={b.code} href={`/notes/${b.code}`} className={`sg ${by(b.code) ? "on" : ""}`}>
+            <b>{b.title}</b>
+            <span className="faint">{b.kind} · {by(b.code) ? `${by(b.code)} / ` : ""}{b.items.length}문항</span>
+          </Link>
+        ))}
+        {plannedBooks.map((b) => (
+          <div key={b.key} className="sg off">
+            <b>{b.title}</b>
+            <span className="faint">{b.kind} · 교재가 나오면 열려요</span>
+          </div>
+        ))}
+      </div>
+      <p className="faint">교재마다 문항 번호대로 노트가 만들어지고, 틀리면 그 문항의 다시 볼 것과 주의할 점이 바로 보여요.</p>
 
       {started.length > 0 && <h2 className="rh">내가 푼 학교</h2>}
       <div className="school-grid">
