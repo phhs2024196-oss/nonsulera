@@ -4,6 +4,7 @@ import { userClient } from "@/lib/supabase/server";
 import { books, materials } from "@/lib/site";
 import { types } from "@/lib/test";
 import { schoolName } from "@/lib/diag";
+import { qna } from "@/lib/qna";
 
 export const metadata: Metadata = { title: "관리자", robots: { index: false } };
 export const dynamic = "force-dynamic";
@@ -19,8 +20,27 @@ const nameOf = (k: string) => {
   if (m) return `${m.title}(${m.kind})`;
   return k === "grading" ? "답안 첨삭" : k;
 };
+const fixed: Record<string, string> = {
+  "/": "첫 화면", "/books": "교재 소개", "/materials": "무료 자료 목록", "/qna": "질문과 답 목록", "/test": "논술 유형 검사",
+  "/grading": "답안 첨삭 안내", "/login": "로그인", "/me": "내 정보", "/privacy": "개인정보 처리방침", "/admin": "관리자", "/diagnosis": "내 대학 진단",
+};
+const pageName = (path: string) => {
+  const p = (path || "/").split("?")[0].replace(/\/$/, "") || "/";
+  if (fixed[p]) return fixed[p];
+  let m = p.match(/^\/materials\/([^/]+)$/);
+  if (m) return `자료: ${nameOf(m[1])}`;
+  m = p.match(/^\/qna\/([^/]+)$/);
+  if (m) return `질문: ${qna.find((q) => q.slug === m![1])?.q ?? m[1]}`;
+  m = p.match(/^\/test\/result\/([^/]+)$/);
+  if (m) return `유형 검사 결과: ${m[1]} ${types[m[1]]?.name ?? ""}`.trim();
+  m = p.match(/^\/download\/([^/]+)$/);
+  if (m) return `다운로드: ${nameOf(m[1])}`;
+  if (p.startsWith("/sns/")) return `SNS 미디어 파일`;
+  return p;
+};
 const n = (v: unknown) => Number(v ?? 0).toLocaleString("ko-KR");
 const kst = (s: string) => new Date(s).toLocaleString("ko-KR", { timeZone: "Asia/Seoul", month: "numeric", day: "numeric", hour: "2-digit", minute: "2-digit" });
+const agentName: Record<string, string> = { ai: "AI 수집기", preview: "링크 미리보기", search: "검색 로봇", tool: "자동화 도구" };
 const provider: Record<string, string> = { kakao: "카카오", google: "구글", email: "이메일" };
 
 function count<T>(rows: T[], pick: (r: T) => string[] | string | null) {
@@ -77,7 +97,7 @@ export default async function Admin() {
     <div className="wrap admin" style={{ padding: "40px var(--gutter)" }}>
       <div style={{ display: "flex", alignItems: "baseline", gap: 12, flexWrap: "wrap", marginBottom: 20 }}>
         <h1 style={{ fontSize: 28 }}>관리자</h1>
-        <span className="faint">불러온 시각 {kst(new Date().toISOString())} · 기록 시작 {k.first_event ? kst(k.first_event) : "-"} · 사람만 집계(로봇·미리보기 {n(k.excluded_bot)}건, 대표님 기기 {n(k.excluded_admin)}건 제외)</span>
+        <span className="faint">불러온 시각 {kst(new Date().toISOString())} · 기록 시작 {k.first_event ? kst(k.first_event) : "-"} · 사람만 집계 · 비인간 {n(k.excluded_bot)}건은 아래 따로 · 대표님·Claude 활동은 기록 안 함</span>
       </div>
 
       <div className="kpis">
@@ -111,7 +131,7 @@ export default async function Admin() {
           <Table head={["유입", "방문자"]} rows={(st.referrers as R[]).map((r) => [r.source, r.visitors])} bar={1} />
         </Box>
         <Box title="많이 본 페이지 (30일)">
-          <Table head={["주소", "조회", "방문자"]} rows={(st.pages as R[]).map((r) => [r.path, r.views, r.visitors])} bar={1} />
+          <Table head={["페이지", "조회", "방문자"]} rows={(st.pages as R[]).map((r) => [pageName(r.path), r.views, r.visitors])} bar={1} />
         </Box>
         <Box title="논술 유형 검사 분포">
           <Table head={["유형", "검사", "사람"]} rows={(st.types as R[]).map((r) => [`${r.code} ${types[r.code]?.name ?? ""}`, r.results, r.people])} bar={2} />
@@ -119,8 +139,9 @@ export default async function Admin() {
         <Box title="기다리는 책·서비스">
           <Table head={["항목", "표시한 사람"]} rows={(st.wishes as R[]).map((r) => [nameOf(r.target), r.people])} bar={1} />
         </Box>
-        <Box title="제외된 로봇·링크 미리보기">
-          <Table head={["종류", "브라우저 정보", "건수"]} rows={((st.bots ?? []) as R[]).map((r) => [r.type, r.ua || "(없음)", r.n])} />
+        <Box title="비인간 접속 (통계에서 제외, 따로 기록)">
+          <Table head={["주체", "행동", "건수", "7일"]} rows={((st.agents ?? []) as R[]).map((r) => [agentName[r.agent_kind] ?? r.agent_kind, r.type, r.n, r.last_7d])} />
+          <Table head={["주체", "브라우저 정보", "건수"]} rows={((st.agent_ua ?? []) as R[]).map((r) => [agentName[r.agent_kind] ?? r.agent_kind, r.ua || "(없음)", r.n])} />
         </Box>
         <Box title="찜 많이 된 대학 (대학 진단)">
           <Table head={["대학", "회원 수"]} rows={(st.saved_schools as R[]).map((r) => [schoolName(r.code), r.n])} bar={1} />
@@ -140,7 +161,7 @@ export default async function Admin() {
       </div>
 
       <p className="faint" style={{ marginTop: 24 }}>
-        원자료는 Supabase 대시보드의 events 표(행동 기록)와 profiles 표(회원)에서 CSV로 내려받을 수 있어요. 공개 전 테스트 기록 약 20건이 포함돼 있어요.
+        원자료는 Supabase 대시보드의 events 표(행동 기록)와 profiles 표(회원)에서 CSV로 내려받을 수 있어요.
       </p>
     </div>
   );

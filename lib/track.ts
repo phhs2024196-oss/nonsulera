@@ -9,6 +9,9 @@ export type EventType = "test_result" | "page_view" | "download" | "wish" | "cli
 export async function logEvent(type: EventType, data: { path?: string; target?: string; meta?: Record<string, unknown> } = {}) {
   const store = await cookies();
   const h = await headers();
+  // 대표·Claude 등 운영자 기기와 확인용 요청은 기록하지 않는다
+  const key = process.env.INTERNAL_KEY;
+  if (key && (store.get("ne_internal")?.value === key || h.get("x-nonsulera-internal") === key)) return;
   const row = {
     p_type: type,
     p_visitor: store.get(VISITOR_COOKIE)?.value ?? null,
