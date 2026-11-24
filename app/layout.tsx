@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import { East_Sea_Dokdo, Gowun_Dodum, Nanum_Myeongjo } from "next/font/google";
 import { Suspense } from "react";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
@@ -7,9 +6,6 @@ import Tracker from "@/components/Tracker";
 import { site } from "@/lib/site";
 import "./globals.css";
 
-const serif = Nanum_Myeongjo({ weight: ["400", "700", "800"], subsets: ["latin"], variable: "--f-serif", display: "swap" });
-const brush = East_Sea_Dokdo({ weight: "400", subsets: ["latin"], variable: "--f-brush", display: "swap" });
-const sans = Gowun_Dodum({ weight: "400", subsets: ["latin"], variable: "--f-sans", display: "swap" });
 
 export const metadata: Metadata = {
   metadataBase: new URL(site.url),
@@ -31,7 +27,11 @@ const orgLd = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="ko" className={`${serif.variable} ${brush.variable} ${sans.variable}`}>
+    <html lang="ko">
+      <head>
+        <link rel="preconnect" href="https://cdn.jsdelivr.net" crossOrigin="" />
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css" />
+      </head>
       <body>
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(orgLd) }} />
         <Header />
