@@ -18,7 +18,7 @@ export default function Materials() {
               <p className="d">{m.summary}</p>
             </div>
             {m.file ? (
-              <a className="btn" href={`/api/download/${m.slug}?from=materials`}>PDF 받기</a>
+              <a className="btn" href={`/download/${m.slug}?from=materials`}>PDF 받기</a>
             ) : (
               <WishButton target={m.slug} label="나오면 받을래요" />
             )}

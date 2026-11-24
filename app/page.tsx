@@ -23,7 +23,7 @@ export default function Home() {
               내신과 수능에 지장 없이, 효율적으로.
             </p>
             <div style={{ display: "flex", gap: 12, flexWrap: "wrap", marginTop: 28 }}>
-              <a className="btn" href={`/api/download/${jj.slug}?from=home-hero`}>지피지기 무료로 받기</a>
+              <a className="btn" href={`/download/${jj.slug}?from=home-hero`}>지피지기 무료로 받기</a>
               <Link className="btn ghost" href="/test">내 논술 유형 검사 (3분)</Link>
             </div>
           </div>
@@ -65,7 +65,7 @@ export default function Home() {
               <h3 style={{ fontSize: 24, marginBottom: 6 }}>{jj.title} <span className="muted" style={{ fontWeight: 400, fontSize: 17 }}>({jj.kind})</span></h3>
               <p className="muted">{jj.summary}</p>
               <ul>{jj.points?.map((p) => <li key={p}>{p}</li>)}</ul>
-              <a className="btn" href={`/api/download/${jj.slug}?from=home-book`}>PDF 받기</a>
+              <a className="btn" href={`/download/${jj.slug}?from=home-book`}>PDF 받기</a>
               <p className="faint" style={{ marginTop: 12 }}>회원가입 없이 바로 받을 수 있어요.</p>
             </div>
           </div>

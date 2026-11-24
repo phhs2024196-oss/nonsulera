@@ -56,7 +56,7 @@ export default async function Result({ params }: { params: Promise<{ code: strin
       <p className="faint" style={{ marginTop: 10 }}>모든 유형의 첫걸음은 무료 총론 지피지기(수리논술 총론)예요.</p>
 
       <div style={{ display: "flex", gap: 12, flexWrap: "wrap", marginTop: 32 }}>
-        <a className="btn" href="/api/download/jipijigi?from=test-result">지피지기 무료로 받기</a>
+        <a className="btn" href="/download/jipijigi?from=test-result">지피지기 무료로 받기</a>
         <Share title={`나의 논술 유형: ${t.name}`} />
         <Link className="btn ghost" href="/test">다시 검사하기</Link>
       </div>

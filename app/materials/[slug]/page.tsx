@@ -41,7 +41,7 @@ export default async function MaterialPage({ params }: { params: Promise<{ slug:
           {m.points && <ul>{m.points.map((p) => <li key={p}>{p}</li>)}</ul>}
           {m.file ? (
             <>
-              <a className="btn" href={`/api/download/${m.slug}?from=detail`}>PDF 받기</a>
+              <a className="btn" href={`/download/${m.slug}?from=detail`}>PDF 받기</a>
               {m.updated && <p className="faint" style={{ marginTop: 12 }}>최종 수정 {m.updated}</p>}
             </>
           ) : (
