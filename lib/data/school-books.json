@@ -1,5 +1,12 @@
 [
  {
+  "code": "KKU",
+  "name": "건국대학교",
+  "file": "/files/schools/jipijigi-kku.pdf",
+  "updated": "2026-11-25",
+  "pages": 18
+ },
+ {
   "code": "CAU",
   "name": "중앙대학교",
   "file": "/files/schools/jipijigi-cau.pdf",
