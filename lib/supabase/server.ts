@@ -1,4 +1,5 @@
 import { createServerClient } from "@supabase/ssr";
+import { createClient } from "@supabase/supabase-js";
 import { cookies } from "next/headers";
 import { SUPABASE_ANON, SUPABASE_URL, authReady } from "./env";
 
@@ -28,4 +29,10 @@ export async function currentUser() {
   if (!sb) return null;
   const { data } = await sb.auth.getUser();
   return data.user ?? null;
+}
+
+/** 로그인 없이 공개 데이터만 읽는 클라이언트(캐시 가능한 페이지용) */
+export function anonClient() {
+  if (!authReady) return null;
+  return createClient(SUPABASE_URL, SUPABASE_ANON, { auth: { persistSession: false } });
 }

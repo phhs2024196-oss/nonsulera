@@ -5,6 +5,8 @@ import { books, materials } from "@/lib/site";
 import { types } from "@/lib/test";
 import { schoolName } from "@/lib/diag";
 import { qna } from "@/lib/qna";
+import Link from "next/link";
+import { shortName, pastItems } from "@/lib/notes";
 
 export const metadata: Metadata = { title: "관리자", robots: { index: false } };
 export const dynamic = "force-dynamic";
@@ -22,7 +24,7 @@ const nameOf = (k: string) => {
 };
 const fixed: Record<string, string> = {
   "/": "첫 화면", "/books": "교재 소개", "/materials": "무료 자료 목록", "/qna": "질문과 답 목록", "/test": "논술 유형 검사",
-  "/grading": "답안 첨삭 안내", "/login": "로그인", "/me": "내 정보", "/privacy": "개인정보 처리방침", "/admin": "관리자", "/diagnosis": "내 대학 진단",
+  "/grading": "답안 첨삭 안내", "/notes": "기출 오답 노트", "/qna/ask": "질문하기", "/login": "로그인", "/me": "내 정보", "/privacy": "개인정보 처리방침", "/admin": "관리자", "/diagnosis": "내 대학 진단",
 };
 const pageName = (path: string) => {
   const p = (path || "/").split("?")[0].replace(/\/$/, "") || "/";
@@ -33,6 +35,8 @@ const pageName = (path: string) => {
   if (m) return `질문: ${qna.find((q) => q.slug === m![1])?.q ?? m[1]}`;
   m = p.match(/^\/test\/result\/([^/]+)$/);
   if (m) return `유형 검사 결과: ${m[1]} ${types[m[1]]?.name ?? ""}`.trim();
+  m = p.match(/^\/notes\/([^/]+)$/);
+  if (m) return `오답 노트: ${shortName(m[1])}`;
   m = p.match(/^\/download\/([^/]+)$/);
   if (m) return `다운로드: ${nameOf(m[1])}`;
   if (p.startsWith("/sns/")) return `SNS 미디어 파일`;
@@ -88,6 +92,13 @@ export default async function Admin() {
   if (!sb) notFound();
   const { data: st, error } = await sb.rpc("admin_stats");
   if (error || !st) notFound(); // 관리자 아니면 DB 함수가 거부
+  const { data: m2 } = await sb.rpc("admin_members_stats");
+  const ms = (m2 ?? { questions: [], notices: [], wrong_top: [], notes_schools: [], notes_by_status: {} }) as R;
+  const openQ = (ms.questions as R[]).filter((q) => q.status === "open").length;
+  const itemName = (id: string, school: string) => {
+    const it = pastItems[school]?.find((x) => x.id === id);
+    return it ? `${shortName(school)} ${it.y} ${it.id.split("-").pop()}번 (${it.u})` : id;
+  };
   const k = st.kpi as R;
   const P = st.profiles as R[];
   const daily = [...(st.daily as R[])].reverse();
@@ -106,7 +117,9 @@ export default async function Admin() {
         <Kpi label="자료 다운로드" value={k.downloads_all} sub={`최근 7일 ${n(k.downloads_7d)}`} />
         <Kpi label="회원 (대표님 제외)" value={k.members} sub={`최근 7일 +${n(k.members_7d)} · 소식 동의 ${P.filter((p) => p.marketing_ok).length}`} />
         <Kpi label="유형 검사" value={k.tests_all} />
-        <Kpi label="대학 진단" value={k.diagnoses_all} sub="기능 공개 전" />
+        <Kpi label="대학 진단" value={k.diagnoses_all} />
+        <Kpi label="오답 노트" value={ms.notes_users} sub={`표시 ${n(ms.notes_total)}문항 · 틀림 ${n(ms.notes_by_status?.wrong)}`} />
+        <Kpi label="답변 대기 질문" value={openQ} sub={`전체 ${n((ms.questions as R[]).length)}`} />
       </div>
 
       <Box title="최근 30일 방문 추이" wide>
@@ -142,6 +155,15 @@ export default async function Admin() {
         <Box title="비인간 접속 (통계에서 제외, 따로 기록)">
           <Table head={["주체", "행동", "건수", "7일"]} rows={((st.agents ?? []) as R[]).map((r) => [agentName[r.agent_kind] ?? r.agent_kind, r.type, r.n, r.last_7d])} />
           <Table head={["주체", "브라우저 정보", "건수"]} rows={((st.agent_ua ?? []) as R[]).map((r) => [agentName[r.agent_kind] ?? r.agent_kind, r.ua || "(없음)", r.n])} />
+        </Box>
+        <Box title="질문 · 학교 소식">
+          <p><Link className="btn" href="/admin/manage">답변하기 · 소식 올리기</Link></p>
+          <Table head={["최근 질문", "상태"]} rows={(ms.questions as R[]).slice(0, 8).map((q) => [`${q.topic} · ${String(q.body).slice(0, 40)}`, q.status === "open" ? "대기" : q.status === "answered" ? "답변" : "닫힘"])} />
+          <Table head={["올린 소식", "학교"]} rows={(ms.notices as R[]).slice(0, 5).map((x) => [x.title, schoolName(x.school)])} />
+        </Box>
+        <Box title="오답 노트: 많이 틀린 문항">
+          <Table head={["문항", "회원 수"]} rows={(ms.wrong_top as R[]).map((r) => [itemName(r.item_id, r.school), r.n])} bar={1} />
+          <Table head={["학교", "쓴 회원", "표시"]} rows={(ms.notes_schools as R[]).map((r) => [shortName(r.school), r.users, r.n])} bar={1} />
         </Box>
         <Box title="찜 많이 된 대학 (대학 진단)">
           <Table head={["대학", "회원 수"]} rows={(st.saved_schools as R[]).map((r) => [schoolName(r.code), r.n])} bar={1} />

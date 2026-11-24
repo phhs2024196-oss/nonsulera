@@ -3,6 +3,8 @@ import AuthLink from "./AuthLink";
 
 const links = [
   { href: "/test", label: "유형 검사" },
+  { href: "/diagnosis", label: "대학 진단" },
+  { href: "/notes", label: "오답 노트" },
   { href: "/materials", label: "무료 자료" },
   { href: "/books", label: "교재" },
   { href: "/grading", label: "답안 첨삭" },

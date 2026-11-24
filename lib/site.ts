@@ -17,6 +17,7 @@ export type Material = {
   pages?: number;
   updated?: string;
   points?: string[];
+  membersOnly?: boolean; // 로그인한 회원만 받기
 };
 
 export const materials: Material[] = [
@@ -40,6 +41,7 @@ export const materials: Material[] = [
     slug: "jipijigi-schools",
     title: "지피지기 학교편",
     kind: "학교별 논술 가이드북 46권",
+    membersOnly: true,
     summary: "학교마다 출제 성향, 시험 형식, 2028 변화를 한 권씩 정리합니다.",
   },
   {

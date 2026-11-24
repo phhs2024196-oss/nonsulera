@@ -3,7 +3,7 @@ import { userClient } from "./supabase/server";
 
 export const VISITOR_COOKIE = "ne_vid";
 
-export type EventType = "test_result" | "page_view" | "download" | "wish" | "click" | "signup" | "profile_update";
+export type EventType = "test_result" | "page_view" | "download" | "wish" | "click" | "signup" | "profile_update" | "diagnosis" | "save_school";
 
 /** 모든 행동 기록은 이 함수 하나로 events 표에 쌓인다(회원이면 DB가 user_id를 직접 채움) */
 export async function logEvent(type: EventType, data: { path?: string; target?: string; meta?: Record<string, unknown> } = {}) {
