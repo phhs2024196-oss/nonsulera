@@ -1,5 +1,12 @@
 [
  {
+  "code": "CAU",
+  "name": "중앙대학교",
+  "file": "/files/schools/jipijigi-cau.pdf",
+  "updated": "2026-11-25",
+  "pages": 20
+ },
+ {
   "code": "HYU",
   "name": "한양대학교",
   "file": "/files/schools/jipijigi-hyu.pdf",
