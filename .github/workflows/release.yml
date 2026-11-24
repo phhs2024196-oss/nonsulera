@@ -2,7 +2,7 @@ name: release
 on:
   push:
     branches: [main]
-    paths: ['jipijigi.pdf']
+    paths: ['public/files/jipijigi.pdf']
   workflow_dispatch:
 permissions:
   contents: write
@@ -11,6 +11,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - run: gh release create "v${{ github.run_number }}" jipijigi.pdf --target "$GITHUB_SHA" --title "지피지기 v${{ github.run_number }}" --notes "무료 수리논술 총론 PDF"
+      - run: gh release create "v${{ github.run_number }}" public/files/jipijigi.pdf --target "$GITHUB_SHA" --title "지피지기 v${{ github.run_number }}" --notes "무료 수리논술 총론 PDF"
         env:
           GH_TOKEN: ${{ github.token }}
